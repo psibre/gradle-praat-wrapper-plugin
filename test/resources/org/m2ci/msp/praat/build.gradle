@@ -17,3 +17,7 @@ task hasPraat {
 task runPraat(type: PraatExec) {
     script = "echo 'praatVersion'"
 }
+
+task runPraatScript(type: PraatExec) {
+    script = 'script.praat'
+}

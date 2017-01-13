@@ -7,8 +7,12 @@ class PraatExec extends DefaultTask {
 
     @TaskAction
     void exec() {
-        def scriptFile = project.file("$temporaryDir/script.praat")
-        scriptFile.text = script
+        def scriptFile = project.file(script)
+        if (!scriptFile.canRead() && !scriptFile.isFile()) {
+            scriptFile = project.file("$temporaryDir/script.praat")
+            scriptFile.text = script
+        }
+        assert scriptFile
         project.exec {
             commandLine 'praat', '--run', scriptFile
         }
