@@ -8,16 +8,19 @@ import static org.gradle.testkit.runner.TaskOutcome.*
 class PraatPluginTest {
 
     File projectDir
-    File buildScriptFile
     GradleRunner gradle
 
     @BeforeClass
     void setUp() {
         projectDir = File.createTempDir()
-        def buildScript = this.getClass().getResourceAsStream('build.gradle').text
-        assert buildScript
-        buildScriptFile = new File(projectDir, 'build.gradle')
-        buildScriptFile.text = buildScript
+        ['build.gradle', 'script.praat'].each { resourceName ->
+            def stream = this.getClass().getResourceAsStream(resourceName)
+            assert stream?.available()
+            def resourceFile = new File(projectDir, resourceName)
+            resourceFile.withOutputStream {
+                it << stream.bytes
+            }
+        }
         gradle = GradleRunner.create().withProjectDir(projectDir).withPluginClasspath()
     }
 
