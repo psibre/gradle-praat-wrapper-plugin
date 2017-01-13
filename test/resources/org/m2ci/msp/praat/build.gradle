@@ -7,3 +7,9 @@ task hasPlugin {
         assert pluginManager.findPlugin('org.m2ci.msp.praat')
     }
 }
+
+task hasPraat {
+    doLast {
+        assert tasks.findByPath(':praat')
+    }
+}

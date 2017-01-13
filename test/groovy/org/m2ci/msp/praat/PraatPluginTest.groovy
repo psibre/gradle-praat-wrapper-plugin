@@ -32,4 +32,10 @@ class PraatPluginTest {
         def result = gradle.withArguments('hasPlugin').build()
         assert result.task(':hasPlugin').outcome == SUCCESS
     }
+
+    @Test
+    void testHasPraat() {
+        def result = gradle.withArguments('hasPraat').build()
+        assert result.task(':hasPraat').outcome == SUCCESS
+    }
 }
