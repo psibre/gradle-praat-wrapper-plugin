@@ -38,4 +38,11 @@ class PraatPluginTest {
         def result = gradle.withArguments('hasPraat').build()
         assert result.task(':hasPraat').outcome == SUCCESS
     }
+
+    @Test
+    void testRunPraat() {
+        def result = gradle.withArguments('runPraat').build()
+        println result.output
+        assert result.task(':runPraat').outcome == SUCCESS
+    }
 }

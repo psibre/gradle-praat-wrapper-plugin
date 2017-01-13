@@ -13,3 +13,7 @@ task hasPraat {
         assert tasks.findByPath(':praat')
     }
 }
+
+task runPraat(type: PraatExec) {
+    script = "echo 'praatVersion'"
+}
