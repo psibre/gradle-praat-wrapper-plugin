@@ -5,6 +5,10 @@ class PraatExec extends DefaultTask {
     @Input
     String script
 
+    void script(String... lines) {
+        script = lines.join('\n')
+    }
+
     @TaskAction
     void exec() {
         def scriptFile = project.file(script)

@@ -21,3 +21,8 @@ task runPraat(type: PraatExec) {
 task runPraatScript(type: PraatExec) {
     script = 'script.praat'
 }
+
+task runPraatListScript(type: PraatExec) {
+    script 'version = praatVersion',
+            "echo 'version'"
+}

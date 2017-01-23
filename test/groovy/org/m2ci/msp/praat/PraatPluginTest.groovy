@@ -55,4 +55,12 @@ class PraatPluginTest {
         println result.output
         assert result.task(':runPraatScript').outcome == SUCCESS
     }
+
+    @Test
+    void testRunPraatListScript() {
+        def result = gradle.withArguments('runPraatListScript').build()
+        println result.output
+        assert result.task(':runPraatListScript').outcome == SUCCESS
+    }
+
 }
