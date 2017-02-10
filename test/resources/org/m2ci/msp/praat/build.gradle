@@ -14,15 +14,24 @@ task hasPraat {
     }
 }
 
+task praatTaskHasPath {
+    doLast {
+        assert tasks.findByPath(':praat').path
+    }
+}
+
 task runPraat(type: PraatExec) {
+    dependsOn 'praat'
     script = "echo 'praatVersion'"
 }
 
 task runPraatScript(type: PraatExec) {
+    dependsOn 'praat'
     script = 'script.praat'
 }
 
 task runPraatListScript(type: PraatExec) {
+    dependsOn 'praat'
     script 'version = praatVersion',
             "echo 'version'"
 }

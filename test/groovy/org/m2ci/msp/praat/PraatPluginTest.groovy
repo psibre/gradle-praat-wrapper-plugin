@@ -43,6 +43,12 @@ class PraatPluginTest {
     }
 
     @Test
+    void testPraatTaskHasPath() {
+        def result = gradle.withArguments('praatTaskHasPath').build()
+        assert result.task(':praatTaskHasPath').outcome == SUCCESS
+    }
+
+    @Test
     void testRunPraat() {
         def result = gradle.withArguments('runPraat').build()
         println result.output

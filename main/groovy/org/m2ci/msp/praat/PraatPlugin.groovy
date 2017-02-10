@@ -4,6 +4,6 @@ import org.gradle.api.*
 
 class PraatPlugin implements Plugin<Project> {
     void apply(Project project) {
-        project.tasks.create('praat')
+        project.task('praat', type: PraatConfig)
     }
 }
