@@ -18,7 +18,7 @@ class PraatExec extends DefaultTask {
         }
         assert scriptFile
         project.exec {
-            commandLine 'praat', '--run', scriptFile
+            commandLine 'praat', scriptFile
         }
     }
 }
