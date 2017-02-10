@@ -14,6 +14,6 @@ class PraatConfig extends DefaultTask {
     }
 
     String which(String binary) {
-        System.getenv('PATH').split(':').collect { new File(it, 'praat') }.find { it.canExecute() }
+        System.getenv('PATH').split(':').collect { new File(it, binary) }.find { it.canExecute() }
     }
 }
