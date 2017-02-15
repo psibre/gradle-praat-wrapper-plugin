@@ -24,49 +24,23 @@ class PraatPluginTest {
         gradle = GradleRunner.create().withProjectDir(projectDir).withPluginClasspath()
     }
 
-    @Test
-    void testConfigure() {
-        def result = gradle.build()
-        assert result.task(':help').outcome == SUCCESS
+    @DataProvider
+    Object[][] testTaskNames() {
+        [
+                'help',
+                'hasPlugin',
+                'hasPraat',
+                'praatTaskHasPath',
+                'runPraat',
+                'runPraatScript',
+                'runPraatListScript'
+        ].collate(1)
     }
 
-    @Test
-    void testHasPlugin() {
-        def result = gradle.withArguments('hasPlugin').build()
-        assert result.task(':hasPlugin').outcome == SUCCESS
-    }
-
-    @Test
-    void testHasPraat() {
-        def result = gradle.withArguments('hasPraat').build()
-        assert result.task(':hasPraat').outcome == SUCCESS
-    }
-
-    @Test
-    void testPraatTaskHasPath() {
-        def result = gradle.withArguments('praatTaskHasPath').build()
-        assert result.task(':praatTaskHasPath').outcome == SUCCESS
-    }
-
-    @Test
-    void testRunPraat() {
-        def result = gradle.withArguments('runPraat').build()
+    @Test(dataProvider = 'testTaskNames')
+    void testTask(taskName) {
+        def result = gradle.withArguments(taskName).build()
         println result.output
-        assert result.task(':runPraat').outcome == SUCCESS
+        assert result.task(":$taskName").outcome == SUCCESS
     }
-
-    @Test
-    void testRunPraatScript() {
-        def result = gradle.withArguments('runPraatScript').build()
-        println result.output
-        assert result.task(':runPraatScript').outcome == SUCCESS
-    }
-
-    @Test
-    void testRunPraatListScript() {
-        def result = gradle.withArguments('runPraatListScript').build()
-        println result.output
-        assert result.task(':runPraatListScript').outcome == SUCCESS
-    }
-
 }
