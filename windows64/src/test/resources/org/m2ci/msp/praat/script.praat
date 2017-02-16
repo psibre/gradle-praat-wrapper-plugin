@@ -1,0 +1,2 @@
+assert windows
+echo 'praatVersion$'
