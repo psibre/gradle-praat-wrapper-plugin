@@ -23,35 +23,9 @@ subprojects {
         praat group: 'org.praat', name: praatName, version: praatVersion, classifier: praatClassifier, ext: praatExtension
     }
 
-    processResources {
-        from configurations.praat, {
-            filesMatching '*.tar.gz/', { tar ->
-                copy {
-                    from tarTree(tar.file)
-                    into "$destinationDir/org/praat/$project.name"
-                }
-                tar.exclude()
-            }
-            filesMatching '*.dmg', { dmg ->
-                exec {
-                    commandLine 'hdiutil', 'attach', '-mountpoint', temporaryDir, dmg.file
-                }
-                copy {
-                    from "$temporaryDir/Praat.app/Contents/MacOS/Praat"
-                    into "$destinationDir/org/praat/$project.name"
-                }
-                exec {
-                    commandLine 'hdiutil', 'detach', temporaryDir
-                }
-                dmg.exclude()
-            }
-            filesMatching '*.zip', { zip ->
-                copy {
-                    from zipTree(zip.file)
-                    into "$destinationDir/org/praat/$project.name"
-                }
-                zip.exclude()
-            }
-        }
+    task copyPraatDependency(type: Copy) {
+        from configurations.praat
+        into temporaryDir
+        processResources.dependsOn it
     }
 }
