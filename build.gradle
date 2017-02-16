@@ -5,6 +5,15 @@ subprojects {
     apply plugin: 'java-gradle-plugin'
     apply plugin: 'groovy'
 
+    gradlePlugin {
+        plugins {
+            praatWrapperPlugin {
+                id = pluginId
+                implementationClass = pluginImplementationClass
+            }
+        }
+    }
+
     repositories {
         jcenter()
         def praatVersionNoDots = praatVersion.replaceAll(~/\./, '')
