@@ -2,6 +2,7 @@ package org.m2ci.msp.praat
 
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.*
+import org.gradle.internal.os.OperatingSystem
 
 class ExtractPraat extends DefaultTask {
 
@@ -9,7 +10,8 @@ class ExtractPraat extends DefaultTask {
     File binary
 
     ExtractPraat() {
-        binary = binary ?: project.file("$temporaryDir/praat")
+        def binaryName = OperatingSystem.current().isWindows() ? 'praat.exe' : 'praat'
+        binary = binary ?: project.file("$temporaryDir/$binaryName")
     }
 
     @TaskAction
