@@ -39,6 +39,7 @@ class PraatWrapperPluginTest {
     @Test
     void testCanRunPraat() {
         def result = gradle.withArguments('canRunPraat').build()
+        println result.output
         assert result.task(':canRunPraat').outcome == SUCCESS
     }
 

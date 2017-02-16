@@ -1,1 +1,2 @@
 assert macintosh
+echo 'praatVersion$'

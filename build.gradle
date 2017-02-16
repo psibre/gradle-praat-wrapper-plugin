@@ -48,5 +48,8 @@ subprojects {
 
     test {
         useTestNG()
+        testLogging {
+            showStandardStreams = true
+        }
     }
 }
