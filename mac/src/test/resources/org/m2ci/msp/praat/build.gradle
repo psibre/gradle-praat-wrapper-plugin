@@ -7,3 +7,10 @@ task hasPlugin {
         assert pluginManager.findPlugin('org.m2ci.msp.praat-wrapper-mac')
     }
 }
+
+task canExtractPraat {
+    dependsOn praat
+    doLast {
+        assert praat.binary.exists()
+    }
+}

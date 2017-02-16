@@ -30,4 +30,10 @@ class PraatWrapperPluginTest {
         assert result.task(':hasPlugin').outcome == SUCCESS
     }
 
+    @Test
+    void testCanExtractPraat() {
+        def result = gradle.withArguments('canExtractPraat').build()
+        assert result.task(':canExtractPraat').outcome == SUCCESS
+    }
+
 }
