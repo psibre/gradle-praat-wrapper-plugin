@@ -14,3 +14,8 @@ task canExtractPraat {
         assert praat.binary.exists()
     }
 }
+
+task canRunPraat(type: Exec) {
+    dependsOn praat
+    commandLine praat.binary, 'script.praat'
+}
