@@ -17,5 +17,6 @@ class ExtractPraat extends DefaultTask {
         binary.withOutputStream { stream ->
             stream << this.getClass().getResourceAsStream('/org/praat/praat')
         }
+        binary.executable = true
     }
 }
