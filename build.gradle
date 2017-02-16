@@ -74,10 +74,9 @@ subprojects {
     }
 
     pluginBundle {
-        website = 'http://m2ci.org/en/irg/msp'
-        vcsUrl = 'https://github.com/m2ci-msp/gradle-praat-wrapper-plugin'
+        website = 'https://github.com/m2ci-msp/gradle-praat-wrapper-plugin'
         description = 'Praat provider for Gradle'
-        tags = ['greetings', 'salutations']
+        tags = ['phonetics', 'speech science']
 
         plugins {
             praatWrapperPlugin {
