@@ -16,9 +16,13 @@ See https://plugins.gradle.org/plugin/org.m2ci.msp.praat-wrapper-mac
 
 See https://plugins.gradle.org/plugin/org.m2ci.msp.praat-wrapper-linux
 
-### Windows
+### Windows (32-bit)
 
 See https://plugins.gradle.org/plugin/org.m2ci.msp.praat-wrapper-windows
+
+### Windows (64-bit)
+
+See https://plugins.gradle.org/plugin/org.m2ci.msp.praat-wrapper-windows64
 
 Praat task
 ----------

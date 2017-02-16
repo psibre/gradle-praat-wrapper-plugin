@@ -7,6 +7,7 @@ Gradle Praat Wrapper Plugin
 ### Added
 
 - Documentation (README, LICENSE, CHANGELOG)
+- Support for Windows (64-bit)
 
 [v0.1] - 2017-02-16
 -------------------
