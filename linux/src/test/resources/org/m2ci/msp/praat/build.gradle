@@ -1,0 +1,9 @@
+plugins {
+    id 'org.m2ci.msp.praat-wrapper-linux'
+}
+
+task hasPlugin {
+    doLast {
+        assert pluginManager.findPlugin('org.m2ci.msp.praat-wrapper-linux')
+    }
+}

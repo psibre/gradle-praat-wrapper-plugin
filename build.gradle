@@ -7,6 +7,7 @@ subprojects {
     apply plugin: 'groovy'
 
     repositories {
+        jcenter()
         def praatVersionNoDots = praatVersion.replaceAll(~/\./, '')
         ivy {
             url 'http://www.fon.hum.uva.nl/praat/old/'
@@ -22,6 +23,7 @@ subprojects {
 
     dependencies {
         compile localGroovy()
+        testCompile group: 'org.testng', name: 'testng', version: '6.9.10'
         praat group: 'org.praat', name: praatName, version: praatVersion, classifier: praatClassifier, ext: praatExtension
     }
 
@@ -31,11 +33,20 @@ subprojects {
                 srcDirs "$rootDir/src/main/groovy"
             }
         }
+        test {
+            groovy {
+                srcDirs "$rootDir/src/test/groovy"
+            }
+        }
     }
 
     task copyPraatDependency(type: Copy) {
         from configurations.praat
         into temporaryDir
         processResources.dependsOn it
+    }
+
+    test {
+        useTestNG()
     }
 }
