@@ -1,6 +1,5 @@
 group 'org.m2ci.msp'
-version '5.4.22'
-status 'integration'
+version '0.1-SNAPSHOT'
 
 subprojects {
     apply plugin: 'java-gradle-plugin'
