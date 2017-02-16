@@ -1,3 +1,12 @@
+gradlePlugin {
+    plugins {
+        praatWrapperPlugin {
+            id = 'org.m2ci.msp.praat-wrapper-linux'
+            implementationClass = 'org.m2ci.msp.praat.PraatWrapperPlugin'
+        }
+    }
+}
+
 processResources {
     from tarTree("$copyPraatDependency.destinationDir/$praatName-$praatVersion-${praatClassifier}.$praatExtension"), {
         filesMatching 'praat', {

@@ -3,7 +3,8 @@ version '5.4.22'
 status 'integration'
 
 subprojects {
-    apply plugin: 'java'
+    apply plugin: 'java-gradle-plugin'
+    apply plugin: 'groovy'
 
     repositories {
         def praatVersionNoDots = praatVersion.replaceAll(~/\./, '')
@@ -20,7 +21,16 @@ subprojects {
     }
 
     dependencies {
+        compile localGroovy()
         praat group: 'org.praat', name: praatName, version: praatVersion, classifier: praatClassifier, ext: praatExtension
+    }
+
+    sourceSets {
+        main {
+            groovy {
+                srcDirs "$rootDir/src/main/groovy"
+            }
+        }
     }
 
     task copyPraatDependency(type: Copy) {
