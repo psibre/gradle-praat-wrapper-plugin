@@ -15,7 +15,7 @@ subprojects {
     apply plugin: 'com.gradle.plugin-publish'
 
     group 'org.m2ci.msp'
-    version '0.2-SNAPSHOT'
+    version '0.2'
 
     gradlePlugin {
         plugins {
