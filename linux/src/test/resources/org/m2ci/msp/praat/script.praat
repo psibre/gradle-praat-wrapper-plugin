@@ -1,2 +1,3 @@
 assert unix
-echo 'praatVersion$'
+assert praatVersion\$ == "$praatVersion"
+echo 'praatVersion\$'

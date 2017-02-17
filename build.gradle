@@ -52,6 +52,9 @@ subprojects {
             groovy {
                 srcDirs "$rootDir/src/main/groovy"
             }
+            resources {
+                srcDirs "$rootDir/src/main/resources"
+            }
         }
         test {
             groovy {
@@ -66,10 +69,21 @@ subprojects {
         processResources.dependsOn it
     }
 
+    processResources {
+        filesMatching 'org/praat/version.txt', {
+            expand version: praatVersion
+        }
+    }
+
+    processTestResources {
+        expand praatVersion: praatVersion
+    }
+
     test {
         useTestNG()
         testLogging {
             showStandardStreams = true
+            exceptionFormat = 'full'
         }
     }
 

@@ -19,3 +19,9 @@ task canRunPraat(type: Exec) {
     dependsOn praat
     commandLine praat.binary, 'script.praat'
 }
+
+task testPraatVersion {
+    doLast {
+        assert praat.version == '$praatVersion'
+    }
+}
