@@ -46,4 +46,9 @@ class PraatWrapperPluginTest {
         assert actual == expected
     }
 
+    @Test
+    void testPraatVersion() {
+        def result = gradle.withArguments('testPraatVersion').build()
+        assert result.task(':testPraatVersion').outcome == SUCCESS
+    }
 }

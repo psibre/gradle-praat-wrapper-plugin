@@ -9,6 +9,9 @@ class ExtractPraat extends DefaultTask {
     @OutputFile
     File binary
 
+    @Internal
+    String version = this.getClass().getResourceAsStream('/org/praat/version.txt').text.trim()
+
     ExtractPraat() {
         def binaryName = OperatingSystem.current().isWindows() ? 'praat.exe' : 'praat'
         binary = binary ?: project.file("$temporaryDir/$binaryName")
