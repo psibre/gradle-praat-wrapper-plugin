@@ -79,6 +79,7 @@ subprojects {
         useTestNG()
         testLogging {
             showStandardStreams = true
+            exceptionFormat = 'full'
         }
     }
 
