@@ -52,6 +52,9 @@ subprojects {
             groovy {
                 srcDirs "$rootDir/src/main/groovy"
             }
+            resources {
+                srcDirs "$rootDir/src/main/resources"
+            }
         }
         test {
             groovy {
@@ -64,6 +67,12 @@ subprojects {
         from configurations.praat
         into temporaryDir
         processResources.dependsOn it
+    }
+
+    processResources {
+        filesMatching 'org/praat/version.txt', {
+            expand version: praatVersion
+        }
     }
 
     test {
