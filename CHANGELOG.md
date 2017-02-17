@@ -4,6 +4,9 @@ Gradle Praat Wrapper Plugin
 [Unreleased]
 ------------
 
+### Changed
+- Restored VCS URL in plugin metadata
+
 [v0.2] - 2017-02-17
 -------------------
 
