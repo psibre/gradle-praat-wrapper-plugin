@@ -1,2 +1,3 @@
 assert macintosh
-echo 'praatVersion$'
+assert praatVersion\$ == "$praatVersion"
+echo 'praatVersion\$'
