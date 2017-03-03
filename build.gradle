@@ -9,7 +9,7 @@ buildscript {
     }
 }
 
-subprojects {
+configure(subprojects.findAll { it.name =~ /praat-wrapper-\w+/ }) {
     apply plugin: 'java-gradle-plugin'
     apply plugin: 'groovy'
     apply plugin: 'com.gradle.plugin-publish'
