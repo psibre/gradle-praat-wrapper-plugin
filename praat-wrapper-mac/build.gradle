@@ -19,7 +19,7 @@ task unpackPraatDependency {
 processResources {
     from unpackPraatDependency, {
         filesMatching 'Praat', {
-            it.path = 'org/praat/praat'
+            it.path = 'org/praat/praat-mac'
         }
     }
 }

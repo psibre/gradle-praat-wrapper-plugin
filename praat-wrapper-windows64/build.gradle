@@ -1,7 +1,7 @@
 processResources {
     from zipTree("$copyPraatDependency.destinationDir/$praatName-$praatVersion-${praatClassifier}.$praatExtension"), {
         filesMatching 'praatcon.exe', {
-            it.path = 'org/praat/praat'
+            it.path = 'org/praat/praat-windows64.exe'
         }
     }
 }
