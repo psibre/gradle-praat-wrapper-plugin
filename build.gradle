@@ -9,12 +9,12 @@ buildscript {
     }
 }
 
-configure(subprojects.findAll { it.name =~ /praat-wrapper-\w+/ }) {
+configure(subprojects.findAll { it.name != 'praat-wrapper-base' }) {
     apply plugin: 'java-gradle-plugin'
     apply plugin: 'groovy'
     apply plugin: 'com.gradle.plugin-publish'
 
-    evaluationDependsOn(':praat-wrapper')
+    evaluationDependsOn(':praat-wrapper-base')
 
     group 'org.m2ci.msp'
     version '0.3-SNAPSHOT'
@@ -44,8 +44,8 @@ configure(subprojects.findAll { it.name =~ /praat-wrapper-\w+/ }) {
     }
 
     dependencies {
-        compile project(':praat-wrapper')
-        testCompile project(':praat-wrapper').sourceSets.test.output
+        compile project(':praat-wrapper-base')
+        testCompile project(':praat-wrapper-base').sourceSets.test.output
         testCompile group: 'org.testng', name: 'testng', version: '6.9.10'
         praat group: 'org.praat', name: praatName, version: praatVersion, classifier: praatClassifier, ext: praatExtension
     }
