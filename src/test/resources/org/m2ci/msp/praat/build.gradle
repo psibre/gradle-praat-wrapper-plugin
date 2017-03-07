@@ -1,0 +1,37 @@
+plugins {
+    id 'org.m2ci.msp.praat'
+}
+
+task hasPlugin {
+    doLast {
+        assert pluginManager.findPlugin('org.m2ci.msp.praat')
+    }
+}
+
+task hasPraat {
+    doLast {
+        assert tasks.findByPath(':praat')
+    }
+}
+
+task praatTaskHasPath {
+    doLast {
+        assert tasks.findByPath(':praat').path
+    }
+}
+
+task runPraat(type: PraatExec) {
+    dependsOn 'praat'
+    script = "echo 'praatVersion'"
+}
+
+task runPraatScript(type: PraatExec) {
+    dependsOn 'praat'
+    script = 'script.praat'
+}
+
+task runPraatListScript(type: PraatExec) {
+    dependsOn 'praat'
+    script 'version = praatVersion',
+            "echo 'version'"
+}
