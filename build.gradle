@@ -9,74 +9,19 @@ buildscript {
     }
 }
 
-subprojects {
-    apply plugin: 'java-gradle-plugin'
+allprojects {
     apply plugin: 'groovy'
-    apply plugin: 'com.gradle.plugin-publish'
 
     group 'org.m2ci.msp'
     version '0.3-SNAPSHOT'
 
-    gradlePlugin {
-        plugins {
-            praatWrapperPlugin {
-                id = pluginId
-                implementationClass = pluginImplementationClass
-            }
-        }
-    }
-
     repositories {
         jcenter()
-        def praatVersionNoDots = praatVersion.replaceAll(~/\./, '')
-        ivy {
-            url 'http://www.fon.hum.uva.nl/praat/old/'
-            layout 'pattern', {
-                artifact "$praatVersionNoDots/[module]${praatVersionNoDots}_[classifier].[ext]"
-            }
-        }
-    }
-
-    configurations {
-        praat
     }
 
     dependencies {
         compile localGroovy()
         testCompile group: 'org.testng', name: 'testng', version: '6.9.10'
-        praat group: 'org.praat', name: praatName, version: praatVersion, classifier: praatClassifier, ext: praatExtension
-    }
-
-    sourceSets {
-        main {
-            groovy {
-                srcDirs "$rootDir/src/main/groovy"
-            }
-            resources {
-                srcDirs "$rootDir/src/main/resources"
-            }
-        }
-        test {
-            groovy {
-                srcDirs "$rootDir/src/test/groovy"
-            }
-        }
-    }
-
-    task copyPraatDependency(type: Copy) {
-        from configurations.praat
-        into temporaryDir
-        processResources.dependsOn it
-    }
-
-    processResources {
-        filesMatching 'org/praat/version.txt', {
-            expand version: praatVersion
-        }
-    }
-
-    processTestResources {
-        expand praatVersion: praatVersion
     }
 
     test {
@@ -84,20 +29,6 @@ subprojects {
         testLogging {
             showStandardStreams = true
             exceptionFormat = 'full'
-        }
-    }
-
-    pluginBundle {
-        website = 'https://github.com/m2ci-msp/gradle-praat-wrapper-plugin'
-        vcsUrl = 'https://github.com/m2ci-msp/gradle-praat-wrapper-plugin'
-        description = 'Praat provider for Gradle'
-        tags = ['phonetics', 'speech science']
-
-        plugins {
-            praatWrapperPlugin {
-                id = pluginId
-                displayName = pluginDisplayName
-            }
         }
     }
 }

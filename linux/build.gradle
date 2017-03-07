@@ -1,7 +1,0 @@
-processResources {
-    from tarTree("$copyPraatDependency.destinationDir/$praatName-$praatVersion-${praatClassifier}.$praatExtension"), {
-        filesMatching 'praat', {
-            it.path = 'org/praat/praat'
-        }
-    }
-}

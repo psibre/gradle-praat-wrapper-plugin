@@ -1,0 +1,73 @@
+allprojects {
+    apply plugin: 'java-gradle-plugin'
+
+    processResources {
+        filesMatching 'org/praat/version.txt', {
+            expand praatVersion: praatVersion
+        }
+    }
+}
+
+subprojects {
+    apply plugin: 'com.gradle.plugin-publish'
+
+    gradlePlugin {
+        plugins {
+            praatWrapperPlugin {
+                id = pluginId
+                implementationClass = pluginImplementationClass
+            }
+        }
+    }
+
+    repositories {
+        def praatVersionNoDots = praatVersion.replaceAll(~/\./, '')
+        ivy {
+            url 'http://www.fon.hum.uva.nl/praat/old/'
+            layout 'pattern', {
+                artifact "$praatVersionNoDots/[module]${praatVersionNoDots}_[classifier].[ext]"
+            }
+        }
+    }
+
+    configurations {
+        praat
+    }
+
+    dependencies {
+        compile project(':praat-wrapper')
+        testCompile project(':praat-wrapper').sourceSets.test.output
+        praat group: 'org.praat', name: praatName, version: praatVersion, classifier: praatClassifier, ext: praatExtension
+    }
+    sourceSets {
+        test {
+            groovy {
+                srcDirs "$rootDir/sharedSrc/test/groovy"
+            }
+        }
+    }
+
+    task copyPraatDependency(type: Copy) {
+        from configurations.praat
+        into temporaryDir
+        processResources.dependsOn it
+    }
+
+    processTestResources {
+        expand praatVersion: praatVersion
+    }
+
+    pluginBundle {
+        website = 'https://github.com/m2ci-msp/gradle-praat-wrapper-plugin'
+        vcsUrl = 'https://github.com/m2ci-msp/gradle-praat-wrapper-plugin'
+        description = 'Praat provider for Gradle'
+        tags = ['phonetics', 'speech science']
+
+        plugins {
+            praatWrapperPlugin {
+                id = pluginId
+                displayName = pluginDisplayName
+            }
+        }
+    }
+}
