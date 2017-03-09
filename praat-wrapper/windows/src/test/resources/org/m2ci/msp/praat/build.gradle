@@ -18,6 +18,9 @@ task canExtractPraat {
 task canRunPraat(type: Exec) {
     dependsOn praat
     commandLine praat.binary, 'script.praat'
+    doLast {
+        println file('output.txt').text
+    }
 }
 
 task testPraatVersion {
