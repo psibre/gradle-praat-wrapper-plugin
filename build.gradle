@@ -12,6 +12,7 @@ buildscript {
 allprojects {
     apply plugin: 'java-gradle-plugin'
     apply plugin: 'groovy'
+    apply plugin: 'com.gradle.plugin-publish'
 
     group 'org.m2ci.msp'
     version '0.3-SNAPSHOT'
@@ -39,6 +40,20 @@ allprojects {
         testLogging {
             showStandardStreams = true
             exceptionFormat = 'full'
+        }
+    }
+
+    pluginBundle {
+        website = 'https://github.com/m2ci-msp/gradle-praat-wrapper-plugin'
+        vcsUrl = 'https://github.com/m2ci-msp/gradle-praat-wrapper-plugin'
+        description = 'Praat provider for Gradle'
+        tags = ['phonetics', 'speech science']
+
+        plugins {
+            praatWrapperPlugin {
+                id = pluginId
+                displayName = pluginDisplayName
+            }
         }
     }
 }

@@ -7,8 +7,6 @@ allprojects {
 }
 
 subprojects {
-    apply plugin: 'com.gradle.plugin-publish'
-
     repositories {
         def praatVersionNoDots = praatVersion.replaceAll(~/\./, '')
         ivy {
@@ -44,19 +42,5 @@ subprojects {
 
     processTestResources {
         expand praatVersion: praatVersion
-    }
-
-    pluginBundle {
-        website = 'https://github.com/m2ci-msp/gradle-praat-wrapper-plugin'
-        vcsUrl = 'https://github.com/m2ci-msp/gradle-praat-wrapper-plugin'
-        description = 'Praat provider for Gradle'
-        tags = ['phonetics', 'speech science']
-
-        plugins {
-            praatWrapperPlugin {
-                id = pluginId
-                displayName = pluginDisplayName
-            }
-        }
     }
 }
