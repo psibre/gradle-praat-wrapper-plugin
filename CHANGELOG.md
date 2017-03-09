@@ -6,6 +6,8 @@ Gradle Praat Wrapper Plugin
 
 ### Added
 - Common base plugin, extended by native plugins
+- Meta-plugin which dynamically applies OS-specific native plugin
+- High-level `PraatExec` task type with flexible `script` parameter
 
 ### Changed
 - Restored VCS URL in plugin metadata
