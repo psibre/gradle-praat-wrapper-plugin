@@ -1,3 +1,3 @@
 assert windows
 assert praatVersion\$ == "$praatVersion"
-echo 'praatVersion\$'
+praatVersion\$ > output.txt
