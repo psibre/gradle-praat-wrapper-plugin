@@ -1,6 +1,4 @@
 allprojects {
-    apply plugin: 'java-gradle-plugin'
-
     processResources {
         filesMatching 'org/praat/version.txt', {
             expand praatVersion: praatVersion
@@ -10,15 +8,6 @@ allprojects {
 
 subprojects {
     apply plugin: 'com.gradle.plugin-publish'
-
-    gradlePlugin {
-        plugins {
-            praatWrapperPlugin {
-                id = pluginId
-                implementationClass = pluginImplementationClass
-            }
-        }
-    }
 
     repositories {
         def praatVersionNoDots = praatVersion.replaceAll(~/\./, '')

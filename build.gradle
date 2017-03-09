@@ -10,10 +10,20 @@ buildscript {
 }
 
 allprojects {
+    apply plugin: 'java-gradle-plugin'
     apply plugin: 'groovy'
 
     group 'org.m2ci.msp'
     version '0.3-SNAPSHOT'
+
+    gradlePlugin {
+        plugins {
+            praatWrapperPlugin {
+                id = pluginId
+                implementationClass = pluginImplementationClass
+            }
+        }
+    }
 
     repositories {
         jcenter()
@@ -31,4 +41,8 @@ allprojects {
             exceptionFormat = 'full'
         }
     }
+}
+
+dependencies {
+    compile project(':praat-wrapper').subprojects
 }
