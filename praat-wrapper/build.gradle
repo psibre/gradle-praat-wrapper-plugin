@@ -1,11 +1,3 @@
-allprojects {
-    processResources {
-        filesMatching 'org/praat/version.txt', {
-            expand praatVersion: praatVersion
-        }
-    }
-}
-
 subprojects {
     repositories {
         def praatVersionNoDots = praatVersion.replaceAll(~/\./, '')
@@ -43,4 +35,8 @@ subprojects {
     processTestResources {
         expand praatVersion: praatVersion
     }
+}
+
+processResources {
+    expand praatVersion: praatVersion
 }
