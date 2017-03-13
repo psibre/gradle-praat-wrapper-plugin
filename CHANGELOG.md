@@ -4,13 +4,19 @@ Gradle Praat Wrapper Plugin
 [Unreleased]
 ------------
 
+### Changed
+
+- Rename native plugins and internally remap groups to facilitate transitive downstream plugin resolution
+
 [v0.3] - 2017-03-09
 -------------------
 
 ### Added
+
 - Common base plugin, extended by native plugins
 
 ### Fixed
+
 - Restored VCS URL in plugin metadata
 
 [v0.2] - 2017-02-17
