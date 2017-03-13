@@ -7,6 +7,7 @@ Gradle Praat Wrapper Plugin
 ### Changed
 
 - Rename native plugins and internally remap groups to facilitate transitive downstream plugin resolution
+- Downgrade provided Praat to v5.4.17 (the last version that runs on Ubuntu 12.04)
 
 [v0.3] - 2017-03-09
 -------------------
