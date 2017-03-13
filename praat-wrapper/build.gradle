@@ -42,10 +42,17 @@ subprojects {
     }
 
     dependencies {
-        compile project(':praat-wrapper')
+        compile group: "gradle.plugin.$group", name: 'praat-wrapper', version: version
         testCompile project(':praat-wrapper').sourceSets.test.output
         praat group: 'org.praat', name: praatName, version: praatVersion, classifier: praatClassifier, ext: praatExtension
     }
+
+    configurations.all {
+        resolutionStrategy.dependencySubstitution {
+            substitute module("gradle.plugin.$group:praat-wrapper") with project(':praat-wrapper')
+        }
+    }
+
     sourceSets {
         test {
             groovy {
