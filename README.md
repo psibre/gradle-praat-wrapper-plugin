@@ -36,7 +36,7 @@ It can then be used in other tasks.
 $ cat > build.gradle << EOF
 
 plugins {
-    id "org.m2ci.msp.praat-wrapper-mac" version "0.3"
+    id "org.m2ci.msp.praat-wrapper-mac" version "0.4"
 }
 
 task runPraatScript(type: Exec) {
