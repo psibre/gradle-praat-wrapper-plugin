@@ -1,10 +1,10 @@
 plugins {
-    id 'org.m2ci.msp.praat-wrapper-mac'
+    id 'org.m2ci.msp.praat-wrapper'
 }
 
 task hasPlugin {
     doLast {
-        assert pluginManager.findPlugin('org.m2ci.msp.praat-wrapper-mac')
+        assert pluginManager.findPlugin('org.m2ci.msp.praat-wrapper')
     }
 }
 
