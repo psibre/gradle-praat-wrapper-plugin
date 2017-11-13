@@ -32,6 +32,14 @@ class PraatWrapperPlugin implements Plugin<Project> {
                 project.dependencies.add('praat', [group: 'org.praat', name: 'praat', version: praatVersion, classifier: 'linux64', ext: 'tar.gz'])
                 binary = 'praat'
                 break
+            case { it.isWindows() && System.getenv("ProgramFiles(x86)") }:
+                project.dependencies.add('praat', [group: 'org.praat', name: 'praatcon', version: praatVersion, classifier: 'win64', ext: 'zip'])
+                binary = 'praatcon.exe'
+                break
+            case { it.isWindows() }:
+                project.dependencies.add('praat', [group: 'org.praat', name: 'praatcon', version: praatVersion, classifier: 'win32', ext: 'zip'])
+                binary = 'praatcon.exe'
+                break
         }
 
         project.task('praat', type: Copy) {
@@ -58,6 +66,13 @@ class PraatWrapperPlugin implements Plugin<Project> {
                     into destinationDir
                 }
                 tarFileDetails.exclude()
+            }
+            filesMatching('*.zip') { zipFileDetails ->
+                project.copy {
+                    from project.zipTree(zipFileDetails.file)
+                    into destinationDir
+                }
+                zipFileDetails.exclude()
             }
         }
     }

@@ -1,5 +1,6 @@
 package org.m2ci.msp.praat
 
+import org.gradle.internal.os.OperatingSystem
 import org.gradle.testkit.runner.GradleRunner
 import org.testng.annotations.*
 
@@ -43,6 +44,10 @@ class PraatWrapperPluginTest {
         assert result.task(':canRunPraat').outcome == SUCCESS
         def expected = this.getClass().getResourceAsStream('/org/praat/version.txt').text.trim()
         def actual = result.output.trim()
+        if (OperatingSystem.current().isWindows()) {
+            actual = new File(projectDir, 'output.txt').text.trim()
+            println actual
+        }
         assert actual == expected
     }
 

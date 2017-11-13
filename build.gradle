@@ -49,6 +49,9 @@ processTestResources {
         case { it.isLinux() }:
             include '**/script_linux.praat'
             break
+        case { it.isWindows() }:
+            include '**/script_windows.praat'
+            break
     }
     filesMatching('**/script_*.praat') {
         it.name = 'script.praat'
