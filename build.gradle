@@ -36,6 +36,14 @@ dependencies {
     testCompile group: 'org.testng', name: 'testng', version: '6.9.10'
 }
 
+processResources {
+    expand praatVersion: praatVersion
+}
+
+processTestResources {
+    expand praatVersion: praatVersion
+}
+
 test {
     useTestNG()
     testLogging {
