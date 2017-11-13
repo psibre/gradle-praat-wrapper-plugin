@@ -28,6 +28,10 @@ class PraatWrapperPlugin implements Plugin<Project> {
                 project.dependencies.add('praat', [group: 'org.praat', name: 'praat', version: praatVersion, classifier: 'mac64', ext: 'dmg'])
                 binary = 'Praat'
                 break
+            case { it.isLinux() }:
+                project.dependencies.add('praat', [group: 'org.praat', name: 'praat', version: praatVersion, classifier: 'linux64', ext: 'tar.gz'])
+                binary = 'praat'
+                break
         }
 
         project.task('praat', type: Copy) {
@@ -47,6 +51,13 @@ class PraatWrapperPlugin implements Plugin<Project> {
                     commandLine 'hdiutil', 'detach', temporaryDir
                 }
                 dmgFileDetails.exclude()
+            }
+            filesMatching('*.tar.gz') { tarFileDetails ->
+                project.copy {
+                    from project.tarTree(tarFileDetails.file)
+                    into destinationDir
+                }
+                tarFileDetails.exclude()
             }
         }
     }
