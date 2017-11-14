@@ -15,11 +15,16 @@ plugins {
 }
 apply plugin: 'com.gradle.plugin-publish'
 
+ext {
+    pluginId = 'org.m2ci.msp.praat-wrapper'
+    praatVersion = '5.4.17'
+}
+
 gradlePlugin {
     plugins {
         praatWrapperPlugin {
             id = pluginId
-            implementationClass = pluginImplementationClass
+            implementationClass = 'org.m2ci.msp.praat.PraatWrapperPlugin'
         }
     }
 }
@@ -76,7 +81,7 @@ pluginBundle {
     plugins {
         praatWrapperPlugin {
             id = pluginId
-            displayName = pluginDisplayName
+            displayName = 'Gradle Praat wrapper plugin'
         }
     }
 }
