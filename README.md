@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/m2ci-msp/gradle-praat-wrapper-plugin.svg?branch=master)](https://travis-ci.org/m2ci-msp/gradle-praat-wrapper-plugin)
+
 Gradle Praat Wrapper Plugin
 ===========================
 
