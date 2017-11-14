@@ -6,29 +6,16 @@ A low-level Gradle plugin that provides [Praat](http://praat.org/) on the classp
 Usage
 -----
 
-The plugin comes in several flavors:
-
-### macOS
-
-See https://plugins.gradle.org/plugin/org.m2ci.msp.praat-wrapper-mac
-
-### Linux
-
-See https://plugins.gradle.org/plugin/org.m2ci.msp.praat-wrapper-linux
-
-### Windows (32-bit)
-
-See https://plugins.gradle.org/plugin/org.m2ci.msp.praat-wrapper-windows
-
-### Windows (64-bit)
-
-See https://plugins.gradle.org/plugin/org.m2ci.msp.praat-wrapper-windows64
+See https://plugins.gradle.org/plugin/org.m2ci.msp.praat-wrapper
 
 Praat task
 ----------
 
-Applying this plugin (in the correct flavor for your platform) creates a `praat` task that extracts the `praat` binary into its temporary directory.
+Applying this plugin creates a `praat` task that downloads and extracts the Praat binary for the current OS into `$buildDir/praat`.
+This path is also provided as the `praat.binary` property.
 It can then be used in other tasks.
+
+Note that the downloaded Praat package is cached by Gradle as a dependency.
 
 ### Example
 
@@ -36,14 +23,14 @@ It can then be used in other tasks.
 $ cat > build.gradle << EOF
 
 plugins {
-    id "org.m2ci.msp.praat-wrapper-mac" version "0.4"
+    id "org.m2ci.msp.praat-wrapper" version "0.4"
 }
 
 task runPraatScript(type: Exec) {
     dependsOn praat
     commandLine praat.binary, 'script.praat'
     doFirst {
-        file('script.praat').text = """echo This is Praat 'praatVersion\$' running via Gradle $gradle.gradleVersion"""
+        file('script.praat').text = "echo This is Praat 'praatVersion\$' running via Gradle $gradle.gradleVersion"
     }
 }
 

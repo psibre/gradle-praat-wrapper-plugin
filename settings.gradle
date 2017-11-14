@@ -1,5 +1,1 @@
 rootProject.name = 'gradle-praat-wrapper-plugin'
-include 'praat-wrapper:praat-wrapper-mac'
-include 'praat-wrapper:praat-wrapper-linux'
-include 'praat-wrapper:praat-wrapper-windows'
-include 'praat-wrapper:praat-wrapper-windows64'

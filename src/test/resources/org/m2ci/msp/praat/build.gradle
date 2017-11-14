@@ -1,0 +1,27 @@
+plugins {
+    id 'org.m2ci.msp.praat-wrapper'
+}
+
+task hasPlugin {
+    doLast {
+        assert pluginManager.findPlugin('org.m2ci.msp.praat-wrapper')
+    }
+}
+
+task canExtractPraat {
+    dependsOn praat
+    doLast {
+        assert praat.binary.exists()
+    }
+}
+
+task canRunPraat(type: Exec) {
+    dependsOn praat
+    commandLine praat.binary, 'script.praat'
+}
+
+task testPraatVersion {
+    doLast {
+        assert praat.version == '$praatVersion'
+    }
+}

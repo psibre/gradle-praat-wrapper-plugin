@@ -9,26 +9,79 @@ buildscript {
     }
 }
 
-allprojects {
-    apply plugin: 'groovy'
+plugins {
+    id 'java-gradle-plugin'
+    id 'groovy'
+}
+apply plugin: 'com.gradle.plugin-publish'
 
-    group 'org.m2ci.msp'
-    version '0.5-SNAPSHOT'
+ext {
+    pluginId = 'org.m2ci.msp.praat-wrapper'
+    praatVersion = '5.4.17'
+}
 
-    repositories {
-        jcenter()
+gradlePlugin {
+    plugins {
+        praatWrapperPlugin {
+            id = pluginId
+            implementationClass = 'org.m2ci.msp.praat.PraatWrapperPlugin'
+        }
     }
+}
 
-    dependencies {
-        compile localGroovy()
-        testCompile group: 'org.testng', name: 'testng', version: '6.9.10'
+group 'org.m2ci.msp'
+version '0.5-SNAPSHOT'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile localGroovy()
+    testCompile group: 'org.testng', name: 'testng', version: '6.9.10'
+}
+
+processResources {
+    expand praatVersion: praatVersion
+}
+
+processTestResources {
+    include '**/build.gradle'
+    switch (org.gradle.internal.os.OperatingSystem.current()) {
+        case { it.isMacOsX() }:
+            include '**/script_mac.praat'
+            break
+        case { it.isLinux() }:
+            include '**/script_linux.praat'
+            break
+        case { it.isWindows() }:
+            include '**/script_windows.praat'
+            break
     }
+    filesMatching('**/script_*.praat') {
+        it.name = 'script.praat'
+    }
+    expand praatVersion: praatVersion
+}
 
-    test {
-        useTestNG()
-        testLogging {
-            showStandardStreams = true
-            exceptionFormat = 'full'
+test {
+    useTestNG()
+    testLogging {
+        showStandardStreams = true
+        exceptionFormat = 'full'
+    }
+}
+
+pluginBundle {
+    website = 'https://github.com/m2ci-msp/gradle-praat-wrapper-plugin'
+    vcsUrl = 'https://github.com/m2ci-msp/gradle-praat-wrapper-plugin'
+    description = 'Praat provider for Gradle'
+    tags = ['phonetics', 'speech science']
+
+    plugins {
+        praatWrapperPlugin {
+            id = pluginId
+            displayName = 'Gradle Praat wrapper plugin'
         }
     }
 }
