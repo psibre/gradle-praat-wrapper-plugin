@@ -4,6 +4,11 @@ Gradle Praat Wrapper Plugin
 [Unreleased]
 ------------
 
+### Changed
+
+- Restructured to remove platform-specific wrapper plugins
+- OS-specific Praat resolved as dependency by project at runtime, instead of being provided on buildscript classpath
+
 [v0.4] - 2017-03-13
 -------------------
 
