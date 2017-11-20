@@ -5,7 +5,7 @@
 Gradle Praat Wrapper Plugin
 ===========================
 
-A low-level Gradle plugin that provides [Praat](http://praat.org/) on the classpath
+A low-level Gradle plugin that provides [Praat](http://praat.org/) v6.0.30 as a custom dependency
 
 Usage
 -----
@@ -26,9 +26,18 @@ Note that the downloaded Praat package is cached by Gradle as a dependency.
 ```
 $ cat > build.gradle << EOF
 
-plugins {
-    id "org.m2ci.msp.praat-wrapper" version "0.5"
+buildscript {
+    repositories {
+        maven {
+            url "https://oss.jfrog.org/artifactory/oss-snapshot-local"
+        }
+    }
+    dependencies {
+        classpath "org.m2ci.msp:gradle-praat-wrapper-plugin:0.6-SNAPSHOT"
+    }
 }
+
+apply plugin: "org.m2ci.msp.praat-wrapper"
 
 task runPraatScript(type: Exec) {
     dependsOn praat
