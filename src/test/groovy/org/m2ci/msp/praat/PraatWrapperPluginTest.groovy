@@ -14,10 +14,25 @@ class PraatWrapperPluginTest {
     @BeforeClass
     void setUp() {
         projectDir = File.createTempDir()
-        ['build.gradle', 'script.praat'].each { resourceName ->
+        def resources = [
+                'build.gradle': 'build.gradle',
+                'script.praat': null
+        ]
+        switch (OperatingSystem.current()) {
+            case { it.isMacOsX() }:
+                resources.'script.praat' = 'script_mac.praat'
+                break
+            case { it.isLinux() }:
+                resources.'script.praat' = 'script_linux.praat'
+                break
+            case { it.isWindows() }:
+                resources.'script.praat' = 'script_windows.praat'
+                break
+        }
+        resources.each { fileName, resourceName ->
             def stream = this.getClass().getResourceAsStream(resourceName)
             assert stream?.available(): "Could not load $resourceName"
-            def resourceFile = new File(projectDir, resourceName)
+            def resourceFile = new File(projectDir, fileName)
             resourceFile.withOutputStream {
                 it << stream.bytes
             }

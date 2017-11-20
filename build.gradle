@@ -46,21 +46,6 @@ processResources {
 }
 
 processTestResources {
-    include '**/build.gradle'
-    switch (org.gradle.internal.os.OperatingSystem.current()) {
-        case { it.isMacOsX() }:
-            include '**/script_mac.praat'
-            break
-        case { it.isLinux() }:
-            include '**/script_linux.praat'
-            break
-        case { it.isWindows() }:
-            include '**/script_windows.praat'
-            break
-    }
-    filesMatching('**/script_*.praat') {
-        it.name = 'script.praat'
-    }
     expand praatVersion: praatVersion
 }
 
