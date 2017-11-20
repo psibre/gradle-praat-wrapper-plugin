@@ -4,6 +4,11 @@ Gradle Praat Wrapper Plugin
 [Unreleased]
 ------------
 
+### Changed
+
+- Update provided Praat to v6.0.30
+- **Note:** running scripts now requires `--run` argument
+
 [v0.5] - 2017-11-20
 -------------------
 
