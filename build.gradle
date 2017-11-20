@@ -17,6 +17,8 @@ plugins {
 
 apply plugin: 'com.gradle.plugin-publish'
 
+targetCompatibility = 1.7
+
 ext {
     pluginId = 'org.m2ci.msp.praat-wrapper'
     praatVersion = '5.4.17'
