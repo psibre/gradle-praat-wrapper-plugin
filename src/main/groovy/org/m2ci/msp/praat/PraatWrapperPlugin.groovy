@@ -16,6 +16,12 @@ class PraatWrapperPlugin implements Plugin<Project> {
         project.repositories {
             def praatVersionNoDots = praatVersion.replaceAll(~/\./, '')
             ivy {
+                url 'https://github.com/praat/praat/releases/download'
+                layout 'pattern', {
+                    artifact "v$praatVersion/[module]${praatVersionNoDots}_[classifier].[ext]"
+                }
+            }
+            ivy {
                 url 'http://www.fon.hum.uva.nl/praat/old/'
                 layout 'pattern', {
                     artifact "$praatVersionNoDots/[module]${praatVersionNoDots}_[classifier].[ext]"
