@@ -41,7 +41,7 @@ apply plugin: "org.m2ci.msp.praat-wrapper"
 
 task runPraatScript(type: Exec) {
     dependsOn praat
-    commandLine praat.binary, 'script.praat'
+    commandLine praat.binary, '--run', 'script.praat'
     doFirst {
         file('script.praat').text = "echo This is Praat 'praatVersion\$' running via Gradle $gradle.gradleVersion"
     }
@@ -49,5 +49,5 @@ task runPraatScript(type: Exec) {
 
 EOF
 $ gradle -q runPraatScript
-This is Praat 5.4.17 running via Gradle 4.3.1
+This is Praat 6.0.30 running via Gradle 4.3.1
 ```
