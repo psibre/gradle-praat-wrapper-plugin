@@ -29,16 +29,16 @@ class PraatWrapperPlugin implements Plugin<Project> {
                 binary = 'Praat'
                 break
             case { it.isLinux() }:
-                project.dependencies.add('praat', [group: 'org.praat', name: 'praat', version: praatVersion, classifier: 'linux64', ext: 'tar.gz'])
-                binary = 'praat'
+                project.dependencies.add('praat', [group: 'org.praat', name: 'praat', version: praatVersion, classifier: 'linux64barren', ext: 'tar.gz'])
+                binary = 'praat_barren'
                 break
             case { it.isWindows() && System.getenv("ProgramFiles(x86)") }:
-                project.dependencies.add('praat', [group: 'org.praat', name: 'praatcon', version: praatVersion, classifier: 'win64', ext: 'zip'])
-                binary = 'praatcon.exe'
+                project.dependencies.add('praat', [group: 'org.praat', name: 'praat', version: praatVersion, classifier: 'win64', ext: 'zip'])
+                binary = 'Praat.exe'
                 break
             case { it.isWindows() }:
-                project.dependencies.add('praat', [group: 'org.praat', name: 'praatcon', version: praatVersion, classifier: 'win32', ext: 'zip'])
-                binary = 'praatcon.exe'
+                project.dependencies.add('praat', [group: 'org.praat', name: 'praat', version: praatVersion, classifier: 'win32', ext: 'zip'])
+                binary = 'Praat.exe'
                 break
         }
 
