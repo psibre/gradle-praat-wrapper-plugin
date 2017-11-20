@@ -4,7 +4,7 @@ import org.gradle.internal.os.OperatingSystem
 import org.gradle.testkit.runner.GradleRunner
 import org.testng.annotations.*
 
-import static org.gradle.testkit.runner.TaskOutcome.SUCCESS
+import static org.gradle.testkit.runner.TaskOutcome.*
 
 class PraatWrapperPluginTest {
 
@@ -14,46 +14,62 @@ class PraatWrapperPluginTest {
     @BeforeClass
     void setUp() {
         projectDir = File.createTempDir()
-        ['build.gradle', 'script.praat'].each { resourceName ->
-            def stream = this.getClass().getResourceAsStream(resourceName)
-            assert stream?.available(): "Could not load $resourceName"
-            def resourceFile = new File(projectDir, resourceName)
-            resourceFile.withOutputStream {
-                it << stream.bytes
+        def resources = [
+                'build.gradle': 'build.gradle',
+                'script.praat': null
+        ]
+        switch (OperatingSystem.current()) {
+            case { it.isMacOsX() }:
+                resources.'script.praat' = 'script_mac.praat'
+                break
+            case { it.isLinux() }:
+                resources.'script.praat' = 'script_linux.praat'
+                break
+            case { it.isWindows() }:
+                resources.'script.praat' = 'script_windows.praat'
+                break
+        }
+        resources.each { fileName, resourceName ->
+            new File(projectDir, fileName).withWriter {
+                def resourceStream = this.class.getResourceAsStream(resourceName)
+                assert resourceStream
+                it << resourceStream
             }
         }
         gradle = GradleRunner.create().withProjectDir(projectDir).withPluginClasspath()
     }
 
-    @Test
-    void testHasPlugin() {
-        def result = gradle.withArguments('hasPlugin').build()
-        assert result.task(':hasPlugin').outcome == SUCCESS
-    }
-
-    @Test
-    void testCanExtractPraat() {
-        def result = gradle.withArguments('canExtractPraat').build()
-        assert result.task(':canExtractPraat').outcome == SUCCESS
-    }
-
-    @Test
-    void testCanRunPraat() {
-        def result = gradle.withArguments('--quiet', 'canRunPraat').build()
-        println result.output
-        assert result.task(':canRunPraat').outcome == SUCCESS
-        def expected = this.getClass().getResourceAsStream('/org/praat/version.txt').text.trim()
-        def actual = result.output.trim()
-        if (OperatingSystem.current().isWindows()) {
-            actual = new File(projectDir, 'output.txt').text.trim()
-            println actual
+    @BeforeSuite
+    void setup() {
+        def projectDir = File.createTempDir()
+        gradle = GradleRunner.create().withProjectDir(projectDir).withPluginClasspath()
+        new File(projectDir, 'build.gradle').withWriter {
+            it << this.class.getResourceAsStream('build.gradle')
         }
-        assert actual == expected
     }
 
-    @Test
-    void testPraatVersion() {
-        def result = gradle.withArguments('testPraatVersion').build()
-        assert result.task(':testPraatVersion').outcome == SUCCESS
+    @DataProvider
+    Object[][] taskNames() {
+        // task name to run, and whether to chase it with a test task named "testName"
+        [
+                ['hasPlugin', false],
+                ['praat', true],
+                ['canRunPraat', false],
+                ['testPraatVersion', false]
+        ]
+    }
+
+    @Test(dataProvider = 'taskNames')
+    void testTasks(String taskName, boolean runTestTask) {
+        def result = gradle.withArguments(taskName).build()
+        println result.output
+        assert result.task(":$taskName").outcome in [SUCCESS, UP_TO_DATE]
+        if (runTestTask) {
+            def testTaskName = 'test' + taskName.capitalize()
+            result = gradle.withArguments(testTaskName).build()
+            println result.output
+            assert result.task(":$taskName").outcome == UP_TO_DATE
+            assert result.task(":$testTaskName").outcome == SUCCESS
+        }
     }
 }
