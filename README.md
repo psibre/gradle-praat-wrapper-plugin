@@ -1,4 +1,6 @@
 [![Build Status](https://travis-ci.org/m2ci-msp/gradle-praat-wrapper-plugin.svg?branch=master)](https://travis-ci.org/m2ci-msp/gradle-praat-wrapper-plugin)
+[![Download](https://api.bintray.com/packages/m2ci-msp/maven/gradle-praat-plugin/images/download.svg)](https://bintray.com/m2ci-msp/maven/gradle-praat-plugin/_latestVersion)
+[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)
 
 Gradle Praat Wrapper Plugin
 ===========================
@@ -25,7 +27,7 @@ Note that the downloaded Praat package is cached by Gradle as a dependency.
 $ cat > build.gradle << EOF
 
 plugins {
-    id "org.m2ci.msp.praat-wrapper" version "0.4"
+    id "org.m2ci.msp.praat-wrapper" version "0.5"
 }
 
 task runPraatScript(type: Exec) {
@@ -38,5 +40,5 @@ task runPraatScript(type: Exec) {
 
 EOF
 $ gradle -q runPraatScript
-This is Praat 5.4.17 running via Gradle 3.4.1
+This is Praat 5.4.17 running via Gradle 4.3.1
 ```

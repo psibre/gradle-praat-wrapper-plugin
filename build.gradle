@@ -12,8 +12,12 @@ buildscript {
 plugins {
     id 'java-gradle-plugin'
     id 'groovy'
+    id 'maven-publish'
 }
+
 apply plugin: 'com.gradle.plugin-publish'
+
+targetCompatibility = 1.7
 
 ext {
     pluginId = 'org.m2ci.msp.praat-wrapper'
@@ -30,7 +34,7 @@ gradlePlugin {
 }
 
 group 'org.m2ci.msp'
-version '0.5-SNAPSHOT'
+version '0.5'
 
 repositories {
     jcenter()
@@ -54,6 +58,30 @@ test {
     testLogging {
         showStandardStreams = true
         exceptionFormat = 'full'
+    }
+}
+
+task sourceJar(type: Jar) {
+    from sourceSets.main.allJava
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+            artifact sourceJar {
+                classifier 'sources'
+            }
+        }
+    }
+    repositories {
+        maven {
+            url version.endsWith('-SNAPSHOT') ? 'https://oss.jfrog.org/artifactory/oss-snapshot-local' : 'https://api.bintray.com/maven/m2ci-msp/maven/gradle-praat-plugin'
+            credentials {
+                username = findProperty('bintrayUser')
+                password = findProperty('bintrayApiKey')
+            }
+        }
     }
 }
 
