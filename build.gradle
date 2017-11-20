@@ -38,7 +38,7 @@ repositories {
 
 dependencies {
     compile localGroovy()
-    testCompile group: 'org.testng', name: 'testng', version: '6.9.10'
+    testCompile group: 'org.testng', name: 'testng', version: '6.11'
 }
 
 processResources {
