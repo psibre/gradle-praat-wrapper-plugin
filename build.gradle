@@ -21,7 +21,7 @@ targetCompatibility = 1.7
 
 ext {
     pluginId = 'org.m2ci.msp.praat-wrapper'
-    praatVersion = '5.4.17'
+    praatVersion = '6.0.30'
 }
 
 gradlePlugin {

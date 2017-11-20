@@ -17,7 +17,7 @@ task testPraat {
 
 task canRunPraat(type: Exec) {
     dependsOn praat
-    commandLine praat.binary, 'script.praat'
+    commandLine praat.binary, '--run', 'script.praat'
 }
 
 task testPraatVersion {
