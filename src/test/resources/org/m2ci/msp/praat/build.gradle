@@ -8,7 +8,7 @@ task hasPlugin {
     }
 }
 
-task canExtractPraat {
+task testPraat {
     dependsOn praat
     doLast {
         assert praat.binary.exists()
