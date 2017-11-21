@@ -4,6 +4,10 @@ Gradle Praat Wrapper Plugin
 [Unreleased]
 ------------
 
+### Added
+
+- Test on Java 9
+
 ### Changed
 
 - Update provided Praat to v6.0.30
