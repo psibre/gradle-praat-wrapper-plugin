@@ -26,18 +26,9 @@ Note that the downloaded Praat package is cached by Gradle as a dependency.
 ```
 $ cat > build.gradle << EOF
 
-buildscript {
-    repositories {
-        maven {
-            url "https://oss.jfrog.org/artifactory/oss-snapshot-local"
-        }
-    }
-    dependencies {
-        classpath "org.m2ci.msp:gradle-praat-wrapper-plugin:0.6-SNAPSHOT"
-    }
+plugins {
+    id "org.m2ci.msp.praat-wrapper" version "0.5.1"
 }
-
-apply plugin: "org.m2ci.msp.praat-wrapper"
 
 task runPraatScript(type: Exec) {
     dependsOn praat
