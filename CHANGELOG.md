@@ -16,6 +16,10 @@ Gradle Praat Wrapper Plugin
 - Update provided Praat to v6.0.30
 - **Note:** running scripts now requires `--run` argument
 
+### Fixed
+
+- Race condition when running `praat` task in parallel on OSX
+
 [v0.5] - 2017-11-20
 -------------------
 
