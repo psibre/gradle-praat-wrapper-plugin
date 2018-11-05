@@ -6,6 +6,7 @@ Gradle Praat Wrapper Plugin
 
 ### Changed
 
+- Build with Gradle v4.10.2
 - [all changes since v0.5.1]
 
 ### Fixed
