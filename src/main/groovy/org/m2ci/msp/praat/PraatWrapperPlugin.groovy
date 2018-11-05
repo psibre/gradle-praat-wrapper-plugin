@@ -48,8 +48,12 @@ class PraatWrapperPlugin implements Plugin<Project> {
             ext.binary = project.file("$destinationDir/$binary")
             ext.version = praatVersion
             filesMatching('*.dmg') { dmgFileDetails ->
+                project.copy {
+                    from dmgFileDetails.file
+                    into temporaryDir
+                }
                 project.exec {
-                    commandLine 'hdiutil', 'attach', '-mountpoint', temporaryDir, dmgFileDetails.file
+                    commandLine 'hdiutil', 'attach', '-mountpoint', temporaryDir, "$temporaryDir/$dmgFileDetails.file.name"
                 }
                 project.copy {
                     from "$temporaryDir/Praat.app/Contents/MacOS"
