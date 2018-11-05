@@ -1,6 +1,13 @@
 Gradle Praat Wrapper Plugin
 ===========================
 
+[Unreleased]
+------------
+
+### Changed
+
+- [all changes since v0.5.2]
+
 [v0.5.2] - 2018-11-05
 ---------------------
 
@@ -85,6 +92,8 @@ Providing Praat v5.4.22 for
 - Linux (64-bit)
 - Windows (32-bit)
 
+[Unreleased]: https://github.com/m2ci-msp/gradle-praat-wrapper-plugin/tree/master
+[all changes since v0.5.2]: https://github.com/m2ci-msp/gradle-praat-wrapper-plugin/compare/v0.5.2...HEAD
 [v0.5.2]: https://github.com/m2ci-msp/gradle-praat-wrapper-plugin/releases/tag/v0.5.2
 [all changes since v0.5.1]: https://github.com/m2ci-msp/gradle-praat-wrapper-plugin/compare/v0.5.1...v0.5.2
 [v0.5.1]: https://github.com/m2ci-msp/gradle-praat-wrapper-plugin/releases/tag/v0.5.1
