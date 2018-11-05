@@ -27,7 +27,7 @@ Note that the downloaded Praat package is cached by Gradle as a dependency.
 $ cat > build.gradle << EOF
 
 plugins {
-    id "org.m2ci.msp.praat-wrapper" version "0.5.1"
+    id "org.m2ci.msp.praat-wrapper" version "0.5.2"
 }
 
 task runPraatScript(type: Exec) {
@@ -40,5 +40,5 @@ task runPraatScript(type: Exec) {
 
 EOF
 $ gradle -q runPraatScript
-This is Praat 6.0.30 running via Gradle 4.3.1
+This is Praat 6.0.30 running via Gradle 4.10.2
 ```
