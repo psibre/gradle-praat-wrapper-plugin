@@ -1,33 +1,20 @@
-buildscript {
-    repositories {
-        maven {
-            url 'https://plugins.gradle.org/m2/'
-        }
-    }
-    dependencies {
-        classpath 'com.gradle.publish:plugin-publish-plugin:0.9.9'
-    }
-}
-
 plugins {
     id 'java-gradle-plugin'
     id 'groovy'
     id 'maven-publish'
+    id 'com.gradle.plugin-publish' version '0.10.0'
 }
-
-apply plugin: 'com.gradle.plugin-publish'
 
 targetCompatibility = 1.7
 
 ext {
-    pluginId = 'org.m2ci.msp.praat-wrapper'
     praatVersion = '6.0.30'
 }
 
 gradlePlugin {
     plugins {
         praatWrapperPlugin {
-            id = pluginId
+            id = 'org.m2ci.msp.praat-wrapper'
             implementationClass = 'org.m2ci.msp.praat.PraatWrapperPlugin'
         }
     }
@@ -93,7 +80,6 @@ pluginBundle {
 
     plugins {
         praatWrapperPlugin {
-            id = pluginId
             displayName = 'Gradle Praat wrapper plugin'
         }
     }
