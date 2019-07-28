@@ -15,6 +15,7 @@ Gradle Praat Wrapper Plugin
 
 ### Changed
 
+- Requires Gradle v5.0 or later!
 - Build with Gradle v5.5.1
 - Target minimum Java version 8
 - Upgrade dependencies

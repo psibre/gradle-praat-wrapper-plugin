@@ -40,5 +40,5 @@ task runPraatScript(type: Exec) {
 
 EOF
 $ gradle -q runPraatScript
-This is Praat 6.0.30 running via Gradle 4.10.2
+This is Praat 6.0.30 running via Gradle 5.5.1
 ```
