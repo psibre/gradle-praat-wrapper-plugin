@@ -5,7 +5,7 @@ plugins {
     id 'com.gradle.plugin-publish' version '0.10.0'
 }
 
-targetCompatibility = 1.7
+targetCompatibility = 1.8
 
 ext {
     praatVersion = '6.0.30'
