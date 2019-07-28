@@ -8,6 +8,14 @@ matrix:
   include:
     - os: linux
       jdk: openjdk8
+    - os: linux
+      jdk: openjdk9
+    - os: linux
+      jdk: openjdk10
+    - os: linux
+      jdk: openjdk11
+    - os: linux
+      jdk: openjdk12
     - os: osx
       osx_image: xcode7.3
     - os: osx
