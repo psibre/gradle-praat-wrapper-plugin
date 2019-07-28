@@ -4,6 +4,15 @@ Gradle Praat Wrapper Plugin
 [Unreleased]
 ------------
 
+### Added
+
+- Testing on OpenJDK 9 through 12
+- Testing on macOS High Sierra and Mojave
+
+### Removed
+
+- Testing on Oracle JDK
+
 ### Changed
 
 - [all changes since v0.5.2]
