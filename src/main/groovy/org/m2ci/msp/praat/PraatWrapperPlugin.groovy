@@ -1,6 +1,8 @@
 package org.m2ci.msp.praat
 
-import org.gradle.api.*
+
+import org.gradle.api.Plugin
+import org.gradle.api.Project
 import org.gradle.api.tasks.Copy
 import org.gradle.internal.os.OperatingSystem
 
@@ -19,6 +21,9 @@ class PraatWrapperPlugin implements Plugin<Project> {
                 url 'http://www.fon.hum.uva.nl/praat/old/'
                 patternLayout {
                     artifact "$praatVersionNoDots/[module]${praatVersionNoDots}_[classifier].[ext]"
+                }
+                metadataSources {
+                    artifact()
                 }
             }
         }
