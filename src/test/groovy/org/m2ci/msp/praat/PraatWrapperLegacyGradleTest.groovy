@@ -24,6 +24,7 @@ class PraatWrapperLegacyGradleTest {
                 .withProjectDir(projectDir)
                 .withPluginClasspath()
                 .withGradleVersion('6.1.1')
+                .forwardOutput()
                 .buildAndFail()
     }
 
@@ -33,6 +34,7 @@ class PraatWrapperLegacyGradleTest {
                 .withProjectDir(projectDir)
                 .withPluginClasspath()
                 .withGradleVersion('6.2')
+                .forwardOutput()
                 .build()
     }
 }

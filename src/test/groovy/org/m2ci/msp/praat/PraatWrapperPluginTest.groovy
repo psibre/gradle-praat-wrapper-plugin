@@ -38,7 +38,7 @@ class PraatWrapperPluginTest {
                 it << resourceStream
             }
         }
-        gradle = GradleRunner.create().withProjectDir(projectDir).withPluginClasspath()
+        gradle = GradleRunner.create().withProjectDir(projectDir).withPluginClasspath().forwardOutput()
     }
 
     @DataProvider

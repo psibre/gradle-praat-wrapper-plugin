@@ -24,7 +24,7 @@ class PraatWrapperConcurrentTest {
                 }
             }
         }
-        gradle = GradleRunner.create().withProjectDir(rootProjectDir).withPluginClasspath()
+        gradle = GradleRunner.create().withProjectDir(rootProjectDir).withPluginClasspath().forwardOutput()
     }
 
     @Test
