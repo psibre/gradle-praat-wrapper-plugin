@@ -19,6 +19,7 @@ class PraatWrapperPlugin implements Plugin<Project> {
             exclusiveContent {
                 forRepository {
                     ivy {
+                        name 'PraatOrg'
                         url 'http://www.fon.hum.uva.nl/praat/old/'
                         allowInsecureProtocol = true
                         patternLayout {
@@ -30,7 +31,7 @@ class PraatWrapperPlugin implements Plugin<Project> {
                     }
                 }
                 filter {
-                    includeGroup "org.praat"
+                    includeGroup 'org.praat'
                 }
             }
         }
