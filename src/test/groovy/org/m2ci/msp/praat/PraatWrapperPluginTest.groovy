@@ -2,18 +2,20 @@ package org.m2ci.msp.praat
 
 import org.gradle.internal.os.OperatingSystem
 import org.gradle.testkit.runner.GradleRunner
-import org.testng.annotations.*
+import org.testng.annotations.BeforeClass
+import org.testng.annotations.DataProvider
+import org.testng.annotations.Test
 
-import static org.gradle.testkit.runner.TaskOutcome.*
+import static org.gradle.testkit.runner.TaskOutcome.SUCCESS
+import static org.gradle.testkit.runner.TaskOutcome.UP_TO_DATE
 
 class PraatWrapperPluginTest {
 
-    File projectDir
     GradleRunner gradle
 
     @BeforeClass
     void setUp() {
-        projectDir = File.createTempDir()
+        def projectDir = File.createTempDir()
         def resources = [
                 'build.gradle': 'build.gradle',
                 'script.praat': null
@@ -37,15 +39,6 @@ class PraatWrapperPluginTest {
             }
         }
         gradle = GradleRunner.create().withProjectDir(projectDir).withPluginClasspath()
-    }
-
-    @BeforeSuite
-    void setup() {
-        def projectDir = File.createTempDir()
-        gradle = GradleRunner.create().withProjectDir(projectDir).withPluginClasspath()
-        new File(projectDir, 'build.gradle').withWriter {
-            it << this.class.getResourceAsStream('build.gradle')
-        }
     }
 
     @DataProvider

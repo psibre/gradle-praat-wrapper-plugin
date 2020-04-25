@@ -14,9 +14,8 @@ class PraatWrapperConcurrentTest {
     @BeforeClass
     void setUp() {
         def rootProjectDir = File.createTempDir()
-        gradle = GradleRunner.create().withProjectDir(rootProjectDir).withPluginClasspath()
         new File(rootProjectDir, 'settings.gradle').withWriter { settings ->
-            (1..6).each { p ->
+            6.times { p ->
                 def projectDir = new File(rootProjectDir, "proj_$p")
                 settings.println "include '$projectDir.name'"
                 projectDir.mkdirs()
