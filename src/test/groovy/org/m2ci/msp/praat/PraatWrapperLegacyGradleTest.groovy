@@ -19,7 +19,7 @@ class PraatWrapperLegacyGradleTest {
     }
 
     @Test
-    void 'Gradle v6.1.1 cannot apply plugin'() {
+    void 'Gradle v6-1-1 cannot apply plugin'() {
         GradleRunner.create()
                 .withProjectDir(projectDir)
                 .withPluginClasspath()
@@ -28,7 +28,7 @@ class PraatWrapperLegacyGradleTest {
     }
 
     @Test
-    void 'Gradle v6.2 can apply plugin'() {
+    void 'Gradle v6-2 can apply plugin'() {
         GradleRunner.create()
                 .withProjectDir(projectDir)
                 .withPluginClasspath()
