@@ -4,9 +4,14 @@ Gradle Praat Wrapper Plugin
 [Unreleased]
 ------------
 
+### Fixed
+
+- Custom repository for Praat
+- Groovy source publishing
+
 ### Added
 
-- Testing on OpenJDK 9 through 12
+- Testing on OpenJDK 9 through 14
 - Testing on macOS High Sierra and Mojave
 
 ### Removed
@@ -15,8 +20,8 @@ Gradle Praat Wrapper Plugin
 
 ### Changed
 
-- Requires Gradle v5.0 or later!
-- Build with Gradle v5.5.1
+- **Require Gradle v6.2 or later!**
+- Build with Gradle v6.3
 - Target minimum Java version 8
 - Upgrade dependencies
 - [all changes since v0.5.2]
