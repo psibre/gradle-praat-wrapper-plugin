@@ -1,6 +1,7 @@
 package org.m2ci.msp.praat
 
-import org.gradle.api.*
+import org.gradle.api.Plugin
+import org.gradle.api.Project
 import org.gradle.api.tasks.Copy
 import org.gradle.internal.os.OperatingSystem
 
@@ -15,10 +16,22 @@ class PraatWrapperPlugin implements Plugin<Project> {
 
         project.repositories {
             def praatVersionNoDots = praatVersion.replaceAll(~/\./, '')
-            ivy {
-                url 'http://www.fon.hum.uva.nl/praat/old/'
-                patternLayout {
-                    artifact "$praatVersionNoDots/[module]${praatVersionNoDots}_[classifier].[ext]"
+            exclusiveContent {
+                forRepository {
+                    ivy {
+                        name 'PraatOrg'
+                        url 'http://www.fon.hum.uva.nl/praat/old/'
+                        allowInsecureProtocol = true
+                        patternLayout {
+                            artifact "$praatVersionNoDots/[module]${praatVersionNoDots}_[classifier].[ext]"
+                        }
+                        metadataSources {
+                            artifact()
+                        }
+                    }
+                }
+                filter {
+                    includeGroup 'org.praat'
                 }
             }
         }

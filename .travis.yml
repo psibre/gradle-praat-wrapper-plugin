@@ -16,17 +16,21 @@ matrix:
       jdk: openjdk11
     - os: linux
       jdk: openjdk12
+    - os: linux
+      jdk: openjdk13
+    - os: linux
+      jdk: openjdk14
     - os: osx
-      # El Capitan
+      # El Capitan (macOS 10.11, JDK 1.8.0_92-b14)
       osx_image: xcode8
     - os: osx
-      # Sierra
+      # Sierra (macOS 10.12, JDK 1.8.0_112-b16)
       osx_image: xcode9
     - os: osx
-      # High Sierra
+      # High Sierra (macOS 10.13, JDK 13.0.1+9)
       osx_image: xcode10
     - os: osx
-      # Mojave
+      # Mojave (macOS 10.14, JDK 14+36-1461)
       osx_image: xcode11
 
 before_cache:
