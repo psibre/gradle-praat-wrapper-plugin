@@ -28,8 +28,8 @@ repositories {
 }
 
 dependencies {
-    compile localGroovy()
-    testCompile group: 'org.testng', name: 'testng', version: '7.0.0'
+    implementation localGroovy()
+    testImplementation group: 'org.testng', name: 'testng', version: '7.0.0'
 }
 
 processResources {

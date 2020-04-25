@@ -20,6 +20,7 @@ class PraatWrapperPlugin implements Plugin<Project> {
                 forRepository {
                     ivy {
                         url 'http://www.fon.hum.uva.nl/praat/old/'
+                        allowInsecureProtocol = true
                         patternLayout {
                             artifact "$praatVersionNoDots/[module]${praatVersionNoDots}_[classifier].[ext]"
                         }
