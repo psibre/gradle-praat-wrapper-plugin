@@ -16,6 +16,8 @@ matrix:
       jdk: openjdk11
     - os: linux
       jdk: openjdk12
+    - os: linux
+      jdk: openjdk13
     - os: osx
       # El Capitan (macOS 10.11, JDK 1.8.0_92-b14)
       osx_image: xcode8
@@ -28,6 +30,9 @@ matrix:
     - os: osx
       # Mojave (macOS 10.14, JDK 12.0.2)
       osx_image: xcode11
+    - os: osx
+      # Mojave (macOS 10.14, JDK 13.0.1)
+      osx_image: xcode11.3
 
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
