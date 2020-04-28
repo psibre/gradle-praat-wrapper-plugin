@@ -12,6 +12,8 @@ Usage
 
 See https://plugins.gradle.org/plugin/org.m2ci.msp.praat-wrapper
 
+Note that Gradle v6.2 or higher is required.
+
 Praat task
 ----------
 
@@ -27,7 +29,7 @@ Note that the downloaded Praat package is cached by Gradle as a dependency.
 $ cat > build.gradle << EOF
 
 plugins {
-    id "org.m2ci.msp.praat-wrapper" version "0.5.2"
+    id "org.m2ci.msp.praat-wrapper" version "0.6"
 }
 
 task runPraatScript(type: Exec) {
@@ -40,5 +42,5 @@ task runPraatScript(type: Exec) {
 
 EOF
 $ gradle -q runPraatScript
-This is Praat 6.0.30 running via Gradle 5.5.1
+This is Praat 6.0.30 running via Gradle 6.3
 ```
