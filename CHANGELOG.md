@@ -6,6 +6,7 @@ Gradle Praat Wrapper Plugin
 
 ### Changed
 
+- Migrated from Travis CI to GitHub Actions
 - [all changes since v0.6]
 
 [v0.6] - 2020-04-28
