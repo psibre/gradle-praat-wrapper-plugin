@@ -22,13 +22,13 @@ class PraatWrapperPluginTest {
         ]
         switch (OperatingSystem.current()) {
             case { it.isMacOsX() }:
-                resources.'script.praat' = 'script_mac.praat'
+                resources['script.praat'] = 'script_mac.praat'
                 break
             case { it.isLinux() }:
-                resources.'script.praat' = 'script_linux.praat'
+                resources['script.praat'] = 'script_linux.praat'
                 break
             case { it.isWindows() }:
-                resources.'script.praat' = 'script_windows.praat'
+                resources['script.praat'] = 'script_windows.praat'
                 break
         }
         resources.each { fileName, resourceName ->
