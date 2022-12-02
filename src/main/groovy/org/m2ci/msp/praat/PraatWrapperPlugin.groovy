@@ -65,16 +65,24 @@ class PraatWrapperPlugin implements Plugin<Project> {
                     from dmgFileDetails.file
                     into temporaryDir
                 }
+                def output = new ByteArrayOutputStream()
                 project.exec {
                     commandLine 'hdiutil', 'attach', '-mountpoint', temporaryDir, "$temporaryDir/$dmgFileDetails.file.name"
+                    standardOutput = output
+                    errorOutput = output
                 }
+                project.logger.info(output.toString())
                 project.copy {
                     from "$temporaryDir/Praat.app/Contents/MacOS"
                     into destinationDir
                 }
+                output = new ByteArrayOutputStream()
                 project.exec {
                     commandLine 'hdiutil', 'detach', temporaryDir
+                    standardOutput = output
+                    errorOutput = output
                 }
+                project.logger.info(output.toString())
                 dmgFileDetails.exclude()
             }
             filesMatching('*.tar.gz') { tarFileDetails ->
