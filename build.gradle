@@ -60,8 +60,11 @@ processTestResources {
 test {
     useTestNG()
     testLogging {
-        showStandardStreams = true
+        events 'passed', 'failed', 'skipped'
         exceptionFormat = 'full'
+        info {
+            showStandardStreams = true
+        }
     }
 }
 

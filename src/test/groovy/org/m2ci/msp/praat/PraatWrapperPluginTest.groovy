@@ -56,12 +56,10 @@ class PraatWrapperPluginTest {
     void testTasks(String taskName, boolean runTestTask) {
         def defaultArgs = ['--warning-mode', 'all']
         def result = gradle.withArguments(defaultArgs + [taskName]).build()
-        println result.output
         assert result.task(":$taskName").outcome in [SUCCESS, UP_TO_DATE]
         if (runTestTask) {
             def testTaskName = 'test' + taskName.capitalize()
             result = gradle.withArguments(defaultArgs + [testTaskName]).build()
-            println result.output
             assert result.task(":$taskName").outcome == UP_TO_DATE
             assert result.task(":$testTaskName").outcome == SUCCESS
         }
