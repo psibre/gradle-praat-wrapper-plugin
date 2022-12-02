@@ -17,6 +17,12 @@ jobs:
         java_version:
           - 8
           - 11
+          - 17
+        exclude:
+          - os: macos-latest
+            java_version: 8
+          - os: macos-latest
+            java_version: 17
     runs-on: ${{ matrix.os }}
 
     steps:
@@ -29,4 +35,4 @@ jobs:
 
       - uses: gradle/gradle-build-action@v2
         with:
-          arguments: build
+          arguments: build --warning-mode=all

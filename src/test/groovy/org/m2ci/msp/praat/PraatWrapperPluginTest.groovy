@@ -22,13 +22,13 @@ class PraatWrapperPluginTest {
         ]
         switch (OperatingSystem.current()) {
             case { it.isMacOsX() }:
-                resources.'script.praat' = 'script_mac.praat'
+                resources['script.praat'] = 'script_mac.praat'
                 break
             case { it.isLinux() }:
-                resources.'script.praat' = 'script_linux.praat'
+                resources['script.praat'] = 'script_linux.praat'
                 break
             case { it.isWindows() }:
-                resources.'script.praat' = 'script_windows.praat'
+                resources['script.praat'] = 'script_windows.praat'
                 break
         }
         resources.each { fileName, resourceName ->
@@ -54,12 +54,13 @@ class PraatWrapperPluginTest {
 
     @Test(dataProvider = 'taskNames')
     void testTasks(String taskName, boolean runTestTask) {
-        def result = gradle.withArguments(taskName).build()
+        def defaultArgs = ['--warning-mode', 'all']
+        def result = gradle.withArguments(defaultArgs + [taskName]).build()
         println result.output
         assert result.task(":$taskName").outcome in [SUCCESS, UP_TO_DATE]
         if (runTestTask) {
             def testTaskName = 'test' + taskName.capitalize()
-            result = gradle.withArguments(testTaskName).build()
+            result = gradle.withArguments(defaultArgs + [testTaskName]).build()
             println result.output
             assert result.task(":$taskName").outcome == UP_TO_DATE
             assert result.task(":$testTaskName").outcome == SUCCESS
