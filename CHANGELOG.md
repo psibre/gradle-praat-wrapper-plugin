@@ -11,11 +11,13 @@ Gradle Praat Wrapper Plugin
 ### Removed
 
 - Testing on Java 9, 10, 12, 13, 14
+- Reliance on Bintray/JCenter
 
 ### Changed
 
 - Migrated from Travis CI to GitHub Actions
 - Build with Gradle v7.5.1
+- Upgraded test dependency
 - [all changes since v0.6]
 
 [v0.6] - 2020-04-28
