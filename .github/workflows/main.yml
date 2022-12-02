@@ -18,6 +18,11 @@ jobs:
           - 8
           - 11
           - 17
+        exclude:
+          - os: macos-latest
+            java_version: 8
+          - os: macos-latest
+            java_version: 17
     runs-on: ${{ matrix.os }}
 
     steps:
