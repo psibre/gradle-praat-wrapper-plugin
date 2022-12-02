@@ -19,6 +19,7 @@ Gradle Praat Wrapper Plugin
 - Build with Gradle v7.5.1
 - Upgraded test dependency
 - Capture, log `hdiutil` output on macOS
+- Migrated publishing from OJO to OSSRH
 - [all changes since v0.6]
 
 [v0.6] - 2020-04-28
