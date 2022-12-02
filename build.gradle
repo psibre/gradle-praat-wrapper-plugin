@@ -5,7 +5,7 @@ plugins {
 }
 
 group 'io.github.m2ci-msp'
-version '0.7-SNAPSHOT'
+version '0.7.0'
 description 'Gradle Praat wrapper plugin'
 
 ext {
