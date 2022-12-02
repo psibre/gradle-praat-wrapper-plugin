@@ -1,8 +1,6 @@
 plugins {
-    id 'java-gradle-plugin'
+    id 'com.gradle.plugin-publish' version '1.1.0'
     id 'groovy'
-    id 'maven-publish'
-    id 'com.gradle.plugin-publish' version '0.21.0'
 }
 
 group 'org.m2ci.msp'
@@ -41,6 +39,7 @@ java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(8)
     }
+    withJavadocJar()
     withSourcesJar()
 }
 
@@ -64,11 +63,6 @@ test {
 }
 
 publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            from components.java
-        }
-    }
     repositories {
         maven {
             url version.endsWith('-SNAPSHOT') ? 'https://oss.jfrog.org/artifactory/oss-snapshot-local' : 'https://api.bintray.com/maven/m2ci-msp/maven/gradle-praat-plugin'
