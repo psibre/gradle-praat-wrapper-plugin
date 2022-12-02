@@ -5,6 +5,7 @@ plugins {
 
 group 'org.m2ci.msp'
 version '0.7-SNAPSHOT'
+ext.isReleaseVersion = !version.endsWith('-SNAPSHOT')
 
 ext {
     praatVersion = '6.0.30'
@@ -65,11 +66,10 @@ test {
 publishing {
     repositories {
         maven {
-            url version.endsWith('-SNAPSHOT') ? 'https://oss.jfrog.org/artifactory/oss-snapshot-local' : 'https://api.bintray.com/maven/m2ci-msp/maven/gradle-praat-plugin'
-            credentials {
-                username = findProperty('bintrayUser')
-                password = findProperty('bintrayApiKey')
-            }
+            name 'NewOSSRH'
+            url isReleaseVersion ? 'https://s01.oss.sonatype.org/service/local/staging/deploy/maven2'
+                    : 'https://s01.oss.sonatype.org/content/repositories/snapshots'
+            credentials(PasswordCredentials)
         }
     }
 }
