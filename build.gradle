@@ -6,9 +6,11 @@ plugins {
 
 group 'org.m2ci.msp'
 version '0.7-SNAPSHOT'
-ext.isReleaseVersion = !version.endsWith('-SNAPSHOT')
+description 'Gradle Praat wrapper plugin'
 
 ext {
+    isReleaseVersion = !version.endsWith('-SNAPSHOT')
+    url = 'https://github.com/m2ci-msp/gradle-praat-wrapper-plugin'
     praatVersion = '6.0.30'
 }
 
@@ -24,7 +26,7 @@ gradlePlugin {
         praatWrapperPlugin {
             id = 'org.m2ci.msp.praat-wrapper'
             implementationClass = 'org.m2ci.msp.praat.PraatWrapperPlugin'
-            displayName = 'Gradle Praat wrapper plugin'
+            displayName = project.description
         }
     }
 }
@@ -65,6 +67,33 @@ test {
 }
 
 publishing {
+    publications {
+        withType(MavenPublication) {
+            pom {
+                name = 'Gradle Praat wrapper plugin'
+                description = project.description
+                url = project.url
+                inceptionYear = '2017'
+                licenses {
+                    license {
+                        name = 'GNU General Public License v3.0'
+                        url = 'https://www.gnu.org/licenses/gpl-3.0-standalone.html'
+                    }
+                }
+                developers {
+                    developer {
+                        name = 'Ingmar Steiner'
+                        url = 'https://github.com/psibre'
+                    }
+                }
+                scm {
+                    connection = 'scm:git:https://github.com/m2ci-msp/gradle-praat-wrapper-plugin.git'
+                    developerConnection = 'scm:git:git@github.com/m2ci-msp/gradle-praat-wrapper-plugin.git'
+                    url = project.url
+                }
+            }
+        }
+    }
     repositories {
         maven {
             name 'NewOSSRH'
