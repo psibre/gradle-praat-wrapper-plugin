@@ -1,5 +1,4 @@
 [![CI](https://github.com/m2ci-msp/gradle-praat-wrapper-plugin/actions/workflows/main.yml/badge.svg)](https://github.com/m2ci-msp/gradle-praat-wrapper-plugin/actions/workflows/main.yml)
-[![Download](https://api.bintray.com/packages/m2ci-msp/maven/gradle-praat-plugin/images/download.svg)](https://bintray.com/m2ci-msp/maven/gradle-praat-plugin/_latestVersion)
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)
 
 Gradle Praat Wrapper Plugin
