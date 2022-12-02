@@ -5,8 +5,24 @@ plugins {
     id 'com.gradle.plugin-publish' version '0.11.0'
 }
 
+group 'org.m2ci.msp'
+version '0.7-SNAPSHOT'
+
 ext {
     praatVersion = '6.0.30'
+}
+
+pluginBundle {
+    website = 'https://github.com/m2ci-msp/gradle-praat-wrapper-plugin'
+    vcsUrl = 'https://github.com/m2ci-msp/gradle-praat-wrapper-plugin'
+    description = 'Praat provider for Gradle'
+    tags = ['phonetics', 'speech science']
+
+    plugins {
+        praatWrapperPlugin {
+            displayName = 'Gradle Praat wrapper plugin'
+        }
+    }
 }
 
 gradlePlugin {
@@ -18,9 +34,6 @@ gradlePlugin {
     }
 }
 
-group 'org.m2ci.msp'
-version '0.7-SNAPSHOT'
-
 repositories {
     mavenCentral()
 }
@@ -29,19 +42,19 @@ dependencies {
     testImplementation group: 'org.testng', name: 'testng', version: '7.5'
 }
 
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(8)
+    }
+    withSourcesJar()
+}
+
 processResources {
     expand praatVersion: praatVersion
 }
 
 processTestResources {
     expand praatVersion: praatVersion
-}
-
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(8)
-    }
-    withSourcesJar()
 }
 
 test {
@@ -65,19 +78,6 @@ publishing {
                 username = findProperty('bintrayUser')
                 password = findProperty('bintrayApiKey')
             }
-        }
-    }
-}
-
-pluginBundle {
-    website = 'https://github.com/m2ci-msp/gradle-praat-wrapper-plugin'
-    vcsUrl = 'https://github.com/m2ci-msp/gradle-praat-wrapper-plugin'
-    description = 'Praat provider for Gradle'
-    tags = ['phonetics', 'speech science']
-
-    plugins {
-        praatWrapperPlugin {
-            displayName = 'Gradle Praat wrapper plugin'
         }
     }
 }
