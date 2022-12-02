@@ -1,14 +1,16 @@
 plugins {
-    id 'java-gradle-plugin'
+    id 'com.gradle.plugin-publish' version '1.1.0'
     id 'groovy'
-    id 'maven-publish'
-    id 'com.gradle.plugin-publish' version '0.11.0'
+    id 'signing'
 }
 
 group 'org.m2ci.msp'
 version '0.7-SNAPSHOT'
+description 'Gradle Praat wrapper plugin'
 
 ext {
+    isReleaseVersion = !version.endsWith('-SNAPSHOT')
+    url = 'https://github.com/m2ci-msp/gradle-praat-wrapper-plugin'
     praatVersion = '6.0.30'
 }
 
@@ -17,12 +19,6 @@ pluginBundle {
     vcsUrl = 'https://github.com/m2ci-msp/gradle-praat-wrapper-plugin'
     description = 'Praat provider for Gradle'
     tags = ['phonetics', 'speech science']
-
-    plugins {
-        praatWrapperPlugin {
-            displayName = 'Gradle Praat wrapper plugin'
-        }
-    }
 }
 
 gradlePlugin {
@@ -30,6 +26,7 @@ gradlePlugin {
         praatWrapperPlugin {
             id = 'org.m2ci.msp.praat-wrapper'
             implementationClass = 'org.m2ci.msp.praat.PraatWrapperPlugin'
+            displayName = project.description
         }
     }
 }
@@ -46,6 +43,7 @@ java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(8)
     }
+    withJavadocJar()
     withSourcesJar()
 }
 
@@ -70,17 +68,42 @@ test {
 
 publishing {
     publications {
-        mavenJava(MavenPublication) {
-            from components.java
+        withType(MavenPublication) {
+            pom {
+                name = 'Gradle Praat wrapper plugin'
+                description = project.description
+                url = project.url
+                inceptionYear = '2017'
+                licenses {
+                    license {
+                        name = 'GNU General Public License v3.0'
+                        url = 'https://www.gnu.org/licenses/gpl-3.0-standalone.html'
+                    }
+                }
+                developers {
+                    developer {
+                        name = 'Ingmar Steiner'
+                        url = 'https://github.com/psibre'
+                    }
+                }
+                scm {
+                    connection = 'scm:git:https://github.com/m2ci-msp/gradle-praat-wrapper-plugin.git'
+                    developerConnection = 'scm:git:git@github.com/m2ci-msp/gradle-praat-wrapper-plugin.git'
+                    url = project.url
+                }
+            }
         }
     }
     repositories {
         maven {
-            url version.endsWith('-SNAPSHOT') ? 'https://oss.jfrog.org/artifactory/oss-snapshot-local' : 'https://api.bintray.com/maven/m2ci-msp/maven/gradle-praat-plugin'
-            credentials {
-                username = findProperty('bintrayUser')
-                password = findProperty('bintrayApiKey')
-            }
+            name 'NewOSSRH'
+            url isReleaseVersion ? 'https://s01.oss.sonatype.org/service/local/staging/deploy/maven2'
+                    : 'https://s01.oss.sonatype.org/content/repositories/snapshots'
+            credentials(PasswordCredentials)
         }
     }
+}
+
+tasks.withType(Sign) {
+    onlyIf { isReleaseVersion }
 }
