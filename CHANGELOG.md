@@ -18,6 +18,7 @@ Gradle Praat Wrapper Plugin
 - Migrated from Travis CI to GitHub Actions
 - Build with Gradle v7.5.1
 - Upgraded test dependency
+- Capture, log `hdiutil` output on macOS
 - [all changes since v0.6]
 
 [v0.6] - 2020-04-28
