@@ -1,8 +1,8 @@
 Gradle Praat Wrapper Plugin
 ===========================
 
-[Unreleased]
-------------
+[v0.7.0] - 2022-12-07
+---------------------
 
 ### Added
 
@@ -20,6 +20,7 @@ Gradle Praat Wrapper Plugin
 - Upgraded test dependency
 - Capture, log `hdiutil` output on macOS
 - Migrated publishing from OJO to OSSRH
+- Changed group ID to `io.github.m2ci-msp`
 - [all changes since v0.6]
 
 [v0.6] - 2020-04-28
@@ -131,8 +132,8 @@ Providing Praat v5.4.22 for
 - Linux (64-bit)
 - Windows (32-bit)
 
-[Unreleased]: https://github.com/m2ci-msp/gradle-praat-wrapper-plugin/tree/master
-[all changes since v0.6]: https://github.com/m2ci-msp/gradle-praat-wrapper-plugin/compare/v0.6...HEAD
+[v0.7.0]: https://github.com/m2ci-msp/gradle-praat-wrapper-plugin/releases/tag/v0.7.0
+[all changes since v0.6]: https://github.com/m2ci-msp/gradle-praat-wrapper-plugin/compare/v0.6...v0.7.0
 [v0.6]: https://github.com/m2ci-msp/gradle-praat-wrapper-plugin/releases/tag/v0.6
 [all changes since v0.5.2]: https://github.com/m2ci-msp/gradle-praat-wrapper-plugin/compare/v0.5.2...v0.6
 [v0.5.2]: https://github.com/m2ci-msp/gradle-praat-wrapper-plugin/releases/tag/v0.5.2

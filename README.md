@@ -9,7 +9,7 @@ A low-level Gradle plugin that provides [Praat](http://praat.org/) v6.0.30 as a 
 Usage
 -----
 
-See https://plugins.gradle.org/plugin/org.m2ci.msp.praat-wrapper
+See https://plugins.gradle.org/plugin/io.github.m2ci-msp.praat-wrapper
 
 Note that Gradle v6.2 or higher is required.
 
@@ -28,7 +28,7 @@ Note that the downloaded Praat package is cached by Gradle as a dependency.
 $ cat > build.gradle << EOF
 
 plugins {
-    id "org.m2ci.msp.praat-wrapper" version "0.6"
+    id "io.github.m2ci-msp.praat-wrapper" version "0.7.0"
 }
 
 task runPraatScript(type: Exec) {
