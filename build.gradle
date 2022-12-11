@@ -4,8 +4,8 @@ plugins {
     id 'signing'
 }
 
-group 'org.m2ci.msp'
-version '0.7-SNAPSHOT'
+group 'io.github.m2ci-msp'
+version '0.8.0-SNAPSHOT'
 description 'Gradle Praat wrapper plugin'
 
 ext {
@@ -24,7 +24,7 @@ pluginBundle {
 gradlePlugin {
     plugins {
         praatWrapperPlugin {
-            id = 'org.m2ci.msp.praat-wrapper'
+            id = 'io.github.m2ci-msp.praat-wrapper'
             implementationClass = 'org.m2ci.msp.praat.PraatWrapperPlugin'
             displayName = project.description
         }
