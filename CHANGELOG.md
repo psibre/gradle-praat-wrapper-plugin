@@ -6,6 +6,9 @@ Gradle Praat Wrapper Plugin
 
 ### Changed
 
+- Upgraded GitHub actions
+- Upgraded dependencies
+- Upgraded plugins
 - [all changes since v0.7.0]
 
 [v0.7.0] - 2022-12-07
