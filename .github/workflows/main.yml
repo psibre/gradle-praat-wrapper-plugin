@@ -20,6 +20,7 @@ jobs:
             java_version: 17
           - os: macos-13
             java_version: 11
+      fail-fast: false
     runs-on: ${{ matrix.os }}
 
     steps:
