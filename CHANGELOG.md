@@ -4,8 +4,17 @@ Gradle Praat Wrapper Plugin
 [Unreleased]
 ------------
 
+### Added
+
+- Testing on Apple Silicon (ARM)
+
+### Fixed
+
+- Building on Apple Silicon (ARM)
+
 ### Changed
 
+- Build with Gradle v7.6.4
 - Upgraded GitHub actions
 - Upgraded dependencies
 - Upgraded plugins
