@@ -7,10 +7,11 @@ Gradle Praat Wrapper Plugin
 ### Added
 
 - Testing on Apple Silicon (ARM)
+- Testing on Java 21
 
 ### Fixed
 
-- Building on Apple Silicon (ARM)
+- Running on macOS 15
 
 ### Changed
 
@@ -18,6 +19,7 @@ Gradle Praat Wrapper Plugin
 - Upgraded GitHub actions
 - Upgraded dependencies
 - Upgraded plugins
+- Resolve Praat dependency via HTTPS
 - [all changes since v0.7.0]
 
 [v0.7.0] - 2022-12-07
