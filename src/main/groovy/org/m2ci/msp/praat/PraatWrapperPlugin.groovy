@@ -39,7 +39,7 @@ class PraatWrapperPlugin implements Plugin<Project> {
         switch (OperatingSystem.current()) {
             case { it.isMacOsX() }:
                 project.dependencies.add('praat', [group: 'org.praat', name: 'praat', version: praatVersion, classifier: 'mac64', ext: 'dmg'])
-                binary = 'Praat'
+                binary = 'Contents/MacOS/Praat'
                 break
             case { it.isLinux() }:
                 project.dependencies.add('praat', [group: 'org.praat', name: 'praat', version: praatVersion, classifier: 'linux64barren', ext: 'tar.gz'])
@@ -73,7 +73,7 @@ class PraatWrapperPlugin implements Plugin<Project> {
                 }
                 project.logger.info(output.toString())
                 project.copy {
-                    from "$temporaryDir/Praat.app/Contents/MacOS"
+                    from "$temporaryDir/Praat.app"
                     into destinationDir
                 }
                 output = new ByteArrayOutputStream()
