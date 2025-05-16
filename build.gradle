@@ -14,19 +14,17 @@ ext {
     praatVersion = '6.0.30'
 }
 
-pluginBundle {
-    website = 'https://github.com/m2ci-msp/gradle-praat-wrapper-plugin'
-    vcsUrl = 'https://github.com/m2ci-msp/gradle-praat-wrapper-plugin'
-    description = 'Praat provider for Gradle'
-    tags = ['phonetics', 'speech science']
-}
-
 gradlePlugin {
+    def url = 'https://github.com/m2ci-msp/gradle-praat-wrapper-plugin'
+    website = url
+    vcsUrl = url
     plugins {
         praatWrapperPlugin {
             id = 'io.github.m2ci-msp.praat-wrapper'
             implementationClass = 'org.m2ci.msp.praat.PraatWrapperPlugin'
             displayName = project.description
+            description = 'Praat provider for Gradle'
+            tags.set(['phonetics', 'speech science'])
         }
     }
 }
