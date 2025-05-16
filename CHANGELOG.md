@@ -15,7 +15,7 @@ Gradle Praat Wrapper Plugin
 
 ### Changed
 
-- Build with Gradle v7.6.4
+- Build with Gradle v8.14
 - Upgraded GitHub actions
 - Upgraded dependencies
 - Upgraded plugins
