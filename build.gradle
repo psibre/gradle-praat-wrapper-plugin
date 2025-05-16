@@ -4,9 +4,9 @@ plugins {
     id 'signing'
 }
 
-group 'io.github.m2ci-msp'
-version '0.8.0-SNAPSHOT'
-description 'Gradle Praat wrapper plugin'
+group = 'io.github.m2ci-msp'
+version = '0.8.0-SNAPSHOT'
+description = 'Gradle Praat wrapper plugin'
 
 ext {
     isReleaseVersion = !version.endsWith('-SNAPSHOT')
@@ -94,8 +94,8 @@ publishing {
     }
     repositories {
         maven {
-            name 'NewOSSRH'
-            url isReleaseVersion ? 'https://s01.oss.sonatype.org/service/local/staging/deploy/maven2'
+            name = 'NewOSSRH'
+            url = isReleaseVersion ? 'https://s01.oss.sonatype.org/service/local/staging/deploy/maven2'
                     : 'https://s01.oss.sonatype.org/content/repositories/snapshots'
             credentials(PasswordCredentials)
         }
