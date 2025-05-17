@@ -4,6 +4,13 @@ Gradle Praat Wrapper Plugin
 [Unreleased]
 ------------
 
+### Changed
+
+- [all changes since v0.8.0]
+
+[v0.8.0] - 2025-05-17
+---------------------
+
 ### Added
 
 - Testing on Apple Silicon (ARM)
@@ -153,8 +160,11 @@ Providing Praat v5.4.22 for
 - Linux (64-bit)
 - Windows (32-bit)
 
+
 [Unreleased]: https://github.com/m2ci-msp/gradle-praat-wrapper-plugin/tree/master
-[all changes since v0.7.0]: https://github.com/m2ci-msp/gradle-praat-wrapper-plugin/compare/v0.7.0...HEAD
+[all changes since v0.8.0]: https://github.com/m2ci-msp/gradle-praat-wrapper-plugin/compare/v0.8.0...HEAD
+[v0.8.0]: https://github.com/m2ci-msp/gradle-praat-wrapper-plugin/releases/tag/v0.8.0
+[all changes since v0.7.0]: https://github.com/m2ci-msp/gradle-praat-wrapper-plugin/compare/v0.7.0...v0.8.0
 [v0.7.0]: https://github.com/m2ci-msp/gradle-praat-wrapper-plugin/releases/tag/v0.7.0
 [all changes since v0.6]: https://github.com/m2ci-msp/gradle-praat-wrapper-plugin/compare/v0.6...v0.7.0
 [v0.6]: https://github.com/m2ci-msp/gradle-praat-wrapper-plugin/releases/tag/v0.6
